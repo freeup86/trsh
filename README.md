@@ -126,6 +126,71 @@ Builds the app for production to the `build` folder
 4. Test thoroughly
 5. Submit a pull request
 
+## Deployment
+
+### Deploy to Render.com
+
+This project is configured for easy deployment to Render.com with the included `render.yaml` file.
+
+#### Prerequisites
+1. GitHub repository with your code
+2. Render.com account (free tier available)
+3. Anthropic API key (optional)
+
+#### Step-by-Step Deployment
+
+1. **Push to GitHub**:
+   ```bash
+   git add .
+   git commit -m "Initial commit - TRSH dashboard"
+   git push origin main
+   ```
+
+2. **Connect to Render**:
+   - Go to [render.com](https://render.com) and sign up/login
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository
+   - Select the `trsh` repository
+
+3. **Configure Environment Variables**:
+   - In Render dashboard, go to your service settings
+   - Add environment variable:
+     - Key: `REACT_APP_ANTHROPIC_API_KEY`
+     - Value: Your Anthropic API key
+   - The app works without the API key (falls back to simulation)
+
+4. **Deploy**:
+   - Render will automatically build and deploy using `render.yaml`
+   - Build process: `npm ci && npm run build`
+   - Serves static files from `./build` folder
+   - Auto-deploys on every push to main branch
+
+#### Render Configuration Details
+
+The `render.yaml` file configures:
+- **Runtime**: Node.js 18
+- **Plan**: Free tier
+- **Build**: Optimized for React production
+- **Routing**: SPA-friendly (all routes → index.html)
+- **Features**: Pull request previews enabled
+
+#### Custom Domain (Optional)
+- In Render dashboard → Settings → Custom Domains
+- Add your domain and configure DNS
+
+### Alternative Deployment Options
+
+#### Netlify
+1. Connect GitHub repository
+2. Build command: `npm run build`
+3. Publish directory: `build`
+4. Add environment variables in site settings
+
+#### Vercel
+1. Import GitHub repository
+2. Framework preset: Create React App
+3. Add environment variables in project settings
+
 ## Security Notes
 
 - Never commit API keys to version control
