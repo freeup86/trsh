@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: trsh-dashboard
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./build
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: REACT_APP_ANTHROPIC_API_KEY
+        sync: false
