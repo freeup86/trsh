@@ -30,12 +30,12 @@ const ERPChangeControl = () => {
       { name: 'Approvers', value: 1, fill: colorPalette.lightBlue }
     ],
     significant: [
-      { name: 'Notified', value: 4, fill: colorPalette.veryLightBlue },
-      { name: 'Approvers', value: 3, fill: colorPalette.mediumBlue }
+      { name: 'Notified', value: 5, fill: colorPalette.veryLightBlue },
+      { name: 'Approvers', value: 2, fill: colorPalette.mediumBlue }
     ],
     major: [
-      { name: 'Notified', value: 6, fill: colorPalette.veryLightBlue },
-      { name: 'Approvers', value: 6, fill: colorPalette.darkBlue }
+      { name: 'Notified', value: 7, fill: colorPalette.veryLightBlue },
+      { name: 'Approvers', value: 4, fill: colorPalette.darkBlue }
     ]
   };
 
@@ -214,29 +214,40 @@ Please respond in the following JSON format:
           {[
             {
               title: 'Minor Change',
+              subtitle: 'Est. Delay 0-1 days',
               description: 'Quick fixes like typos and simple clarifications. Handled rapidly to maintain content accuracy without disrupting workflow.',
               borderColor: colorPalette.lightBlue
             },
             {
               title: 'Significant Change',
+              subtitle: 'Est. Delay 5-10 days',
               description: 'Broader modifications affecting content or structure, requiring formal review and potentially pushing work to the next sprint.',
               borderColor: colorPalette.mediumBlue
             },
             {
               title: 'Major Change',
+              subtitle: 'Est. Delay 15+ days',
               description: 'Substantial revisions to core content or strategy, requiring high-level approval and a potential pause in development.',
               borderColor: colorPalette.darkBlue
             }
           ].map((category, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-white p-6 rounded-lg shadow-md flex flex-col h-full"
               style={{ borderBottom: `4px solid ${category.borderColor}` }}
             >
-              <h3 className="text-2xl font-bold mb-2" style={{ color: colorPalette.darkBlue }}>
-                {category.title}
-              </h3>
-              <p className="text-gray-600">{category.description}</p>
+              <div className="flex-grow">
+                <h3 className="text-2xl font-bold mb-2" style={{ color: colorPalette.darkBlue }}>
+                  {category.title}
+                </h3>
+                <p className="text-gray-600">{category.description}</p>
+                {(category.title === 'Significant Change' || category.title === 'Major Change') && <br />}
+              </div>
+              {category.subtitle && (
+                <p className="text-base font-bold text-gray-600 mt-4">
+                  {category.subtitle}
+                </p>
+              )}
             </div>
           ))}
         </section>
