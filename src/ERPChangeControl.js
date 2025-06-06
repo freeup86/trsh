@@ -427,10 +427,11 @@ Please respond in the following JSON format:
             />
             <button
               onClick={predictImpact}
-              className="text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out hover:opacity-90"
-              style={{ backgroundColor: colorPalette.darkBlue }}
+              className="btn-primary btn-with-icon"
+              disabled={isLoading}
             >
-              Predict Change Impact
+              <Search className="btn-icon" size={20} />
+              {isLoading ? 'Analyzing...' : 'Predict Change Impact'}
             </button>
             
             {isLoading && (
