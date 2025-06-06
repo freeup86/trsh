@@ -147,7 +147,10 @@ const ERPChangeControl = () => {
       // Use Claude API
       const anthropic = new Anthropic({
         apiKey: apiKey,
-        dangerouslyAllowBrowser: true // Note: In production, you should use a backend proxy
+        dangerouslyAllowBrowser: true, // Note: In production, you should use a backend proxy
+        defaultHeaders: {
+          'anthropic-dangerous-direct-browser-access': 'true'
+        }
       });
 
       const prompt = `You are an expert in ERP training change management. Your task is to classify a proposed change into one of three categories: 'Minor Change', 'Significant Change', or 'Major Change' and the number of days delay. Provide a brief justification for your classification based on typical impacts in ERP training projects.
