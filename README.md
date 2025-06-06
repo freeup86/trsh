@@ -1,12 +1,12 @@
 # TRSH - ERP Training Material Change Control Dashboard
 
-A React-based dashboard for managing and visualizing ERP training material change control processes. Features interactive charts, data visualization, and an AI-powered change impact predictor.
+A React-based dashboard for managing and visualizing ERP training material change control processes. Features interactive charts, data visualization, and an AI-powered training impact predictor.
 
 ## Features
 
 - **Change Classification Dashboard**: Visual overview of Minor, Significant, and Major changes
 - **Interactive Charts**: Schedule impact, stakeholder involvement, ripple effects, and resource allocation
-- **AI-Powered Impact Predictor**: Uses Anthropic's Claude API to classify change requests and estimate delays
+- **AI-Powered Training Impact Predictor**: Uses Anthropic's Claude API to classify change requests and estimate delays
 - **Process Flow Visualization**: Clear representation of change control workflows
 - **Development Cycle Tracking**: Training material development and review stages
 - **Responsive Design**: Works on desktop and mobile devices
@@ -59,11 +59,11 @@ The app will be available at `http://localhost:3000`
 
 ## Usage
 
-### Change Impact Predictor
+### Training Impact Predictor
 
-1. Navigate to the "Change Impact Predictor" section
+1. Navigate to the "Training Impact Predictor" section
 2. Enter a description of your proposed change
-3. Click "Predict Change Impact"
+3. Click "Predict Training Impact"
 4. View the AI-generated classification, estimated delay, and justification
 
 **Example inputs:**
@@ -83,7 +83,7 @@ The app will be available at `http://localhost:3000`
 
 ### With Anthropic Claude API
 
-The app uses Claude 3 Haiku for intelligent change impact analysis. To enable:
+The app uses Claude 3 Haiku for intelligent training impact analysis. To enable:
 
 1. Get an API key from [Anthropic Console](https://console.anthropic.com/)
 2. Add it to your `.env.local` file

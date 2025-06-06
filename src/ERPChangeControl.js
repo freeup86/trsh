@@ -19,7 +19,7 @@ const ERPChangeControl = () => {
 
   // Data for charts
   const scheduleImpactData = [
-    { name: 'Minor Change', days: 0, fill: colorPalette.lightBlue },
+    { name: 'Minor Change', days: 1, fill: colorPalette.lightBlue },
     { name: 'Significant Change', days: 8, fill: colorPalette.mediumBlue },
     { name: 'Major Change', days: 20, fill: colorPalette.darkBlue }
   ];
@@ -30,26 +30,26 @@ const ERPChangeControl = () => {
       { name: 'Approvers', value: 1, fill: colorPalette.lightBlue }
     ],
     significant: [
-      { name: 'Notified', value: 5, fill: colorPalette.veryLightBlue },
-      { name: 'Approvers', value: 2, fill: colorPalette.mediumBlue }
+      { name: 'Notified', value: 4, fill: colorPalette.veryLightBlue },
+      { name: 'Approvers', value: 3, fill: colorPalette.mediumBlue }
     ],
     major: [
-      { name: 'Notified', value: 7, fill: colorPalette.veryLightBlue },
-      { name: 'Approvers', value: 4, fill: colorPalette.darkBlue }
+      { name: 'Notified', value: 6, fill: colorPalette.veryLightBlue },
+      { name: 'Approvers', value: 6, fill: colorPalette.darkBlue }
     ]
   };
 
   const rippleEffectData = [
     { subject: 'System Development', significant: 3, major: 8 },
-    { subject: 'Business Process Docs', significant: 4, major: 9 },
+    { subject: 'Process Docs', significant: 4, major: 9 },
     { subject: 'UAT Scenarios', significant: 5, major: 8 },
-    { subject: 'Other Training Materials', significant: 6, major: 9 },
+    { subject: 'Training Materials', significant: 6, major: 9 },
     { subject: 'Go-Live Readiness', significant: 2, major: 7 }
   ];
 
   const flowSteps = [
     { title: 'Request Submitted', subtitle: '' },
-    { title: 'Initial Assessment', subtitle: '24 hrs' },
+    { title: 'Initial Assessment', subtitle: '' },
     { title: 'Categorization', subtitle: '' },
     { title: 'Stakeholder Approval', subtitle: '' },
     { title: 'Implementation', subtitle: '' }
@@ -62,24 +62,24 @@ const ERPChangeControl = () => {
       description: 'Gathering materials, AI assist, complete OUTLINE, e-LEARNING MODULE, FACILITATOR GUIDE & TRAINING DECK. QA before SME Review.'
     },
     {
-      title: 'Alpha Review (SMEs)',
-      subtitle: '3 business days',
-      description: 'SME content review, detailed review of business context and course structure. BA content identified. **Changes are made here.** OCM changes can be implemented.'
-    },
-    {
       title: 'Beta Revision (ISG)',
       subtitle: '1 business day',
       description: 'Complete SME requested revisions, refine missing details, clean up document. Accept/reject track changes.'
     },
     {
-      title: 'Beta Review (SMEs)',
-      subtitle: '2 business days',
-      description: 'Validate Beta Revision. Small wording tweaks. **No major changes at this point.** OCM changes may be implemented.'
-    },
-    {
       title: 'Final Revision (ISG)',
       subtitle: '1 business day',
       description: 'Complete Beta Review requests (minor). Clear comments. Final QA by ISG Team. OCM changes may be implemented.'
+    },
+    {
+      title: 'Alpha Review (SMEs)',
+      subtitle: '3 business days',
+      description: 'SME content review, detailed review of business context and course structure. BA content identified. **Changes are made here.** OCM changes can be implemented.'
+    },
+    {
+      title: 'Beta Review (SMEs)',
+      subtitle: '2 business days',
+      description: 'Validate Beta Revision. Small wording tweaks. **No major changes at this point.** OCM changes may be implemented.'
     },
     {
       title: 'Final Sign off Request',
@@ -201,14 +201,6 @@ Please respond in the following JSON format:
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <header className="text-center mb-12">
-          <div className="app-title-container mb-6">
-            <div className="app-title" style={{ color: colorPalette.darkBlue }}>
-              TRSH
-            </div>
-            <div className="app-subtitle" style={{ color: colorPalette.mediumBlue }}>
-              Training Resource Success Hub
-            </div>
-          </div>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-2" style={{ color: colorPalette.textColor }}>
             Streamlining Success
           </h1>
@@ -268,7 +260,7 @@ Please respond in the following JSON format:
                   {step.subtitle && <p className="text-sm text-gray-600 mt-1">{step.subtitle}</p>}
                 </div>
                 {index < flowSteps.length - 1 && (
-                  <ArrowRight className="hidden md:block" size={24} color={colorPalette.lightBlue} />
+                  <ArrowRight className="mx-2" size={28} color={colorPalette.mediumBlue} style={{ strokeWidth: 2.5 }} />
                 )}
               </React.Fragment>
             ))}
@@ -286,11 +278,22 @@ Please respond in the following JSON format:
               The category of a change request directly correlates to its impact on project timelines. Major changes require significant re-planning, leading to the longest delays.
             </p>
             <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={scheduleImpactData}>
+              <BarChart 
+                data={scheduleImpactData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Tooltip />
+                <Tooltip 
+                  cursor={false}
+                  contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #ccc',
+                    borderRadius: '4px',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                  }}
+                />
                 <Bar dataKey="days" fill={colorPalette.mediumBlue}>
                   {scheduleImpactData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
@@ -416,10 +419,10 @@ Please respond in the following JSON format:
           </div>
         </section>
 
-        {/* Change Impact Predictor */}
+        {/* Training Impact Predictor */}
         <section className="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12">
           <h2 className="text-3xl font-bold text-center mb-4" style={{ color: colorPalette.textColor }}>
-            ✨ Change Impact Predictor ✨
+            ✨ Training Impact Predictor ✨
           </h2>
           <p className="text-center text-gray-600 max-w-3xl mx-auto mb-6">
             Describe a proposed change to your ERP training materials below, and our AI assistant will help categorize its likely impact (Minor, Significant, or Major) and provide a brief justification.
@@ -439,7 +442,7 @@ Please respond in the following JSON format:
               disabled={isLoading}
             >
               <Search className="btn-icon" size={20} />
-              {isLoading ? 'Analyzing...' : 'Predict Change Impact'}
+              {isLoading ? 'Analyzing...' : 'Predict Training Impact'}
             </button>
             
             {isLoading && (
