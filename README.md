@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+# TRSH - ERP Training Material Change Control Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based dashboard for managing and visualizing ERP training material change control processes. Features interactive charts, data visualization, and an AI-powered change impact predictor.
+
+## Features
+
+- **Change Classification Dashboard**: Visual overview of Minor, Significant, and Major changes
+- **Interactive Charts**: Schedule impact, stakeholder involvement, ripple effects, and resource allocation
+- **AI-Powered Impact Predictor**: Uses Anthropic's Claude API to classify change requests and estimate delays
+- **Process Flow Visualization**: Clear representation of change control workflows
+- **Development Cycle Tracking**: Training material development and review stages
+- **Responsive Design**: Works on desktop and mobile devices
+
+## Technology Stack
+
+- **Frontend**: React 18
+- **Charts**: Recharts library
+- **Icons**: Lucide React
+- **AI Integration**: Anthropic Claude API
+- **Styling**: Custom CSS utilities (Tailwind-inspired)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+- Anthropic API key (optional, falls back to simulation)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd trsh
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.local.example .env.local
+```
+
+4. Add your Anthropic API key to `.env.local`:
+```
+REACT_APP_ANTHROPIC_API_KEY=your_anthropic_api_key_here
+```
+
+5. Start the development server:
+```bash
+npm start
+```
+
+The app will be available at `http://localhost:3000`
+
+## Usage
+
+### Change Impact Predictor
+
+1. Navigate to the "Change Impact Predictor" section
+2. Enter a description of your proposed change
+3. Click "Predict Change Impact"
+4. View the AI-generated classification, estimated delay, and justification
+
+**Example inputs:**
+- "Fix typo in module 3 screenshot" → Minor Change, 0 days
+- "Add new approval workflow process" → Significant Change, 5-9 days  
+- "Complete restructure of training strategy" → Major Change, 15-25 days
+
+### Dashboard Components
+
+- **Change Categories**: Overview of Minor, Significant, and Major change types
+- **Change Control Flow**: Step-by-step process visualization
+- **Impact Charts**: Visual data on timeline delays and stakeholder involvement
+- **Development Cycle**: Training material review stages
+- **Guiding Principles**: Best practices for change management
+
+## API Configuration
+
+### With Anthropic Claude API
+
+The app uses Claude 3 Haiku for intelligent change impact analysis. To enable:
+
+1. Get an API key from [Anthropic Console](https://console.anthropic.com/)
+2. Add it to your `.env.local` file
+3. The predictor will automatically use Claude for analysis
+
+### Without API Key
+
+The app gracefully falls back to a keyword-based simulation system that provides reasonable predictions based on common patterns.
+
+## Project Structure
+
+```
+src/
+├── ERPChangeControl.js    # Main dashboard component
+├── App.js                 # Root component
+├── index.js              # Entry point
+├── index.css             # Global styles and utility classes
+└── App.css               # Component styles
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000)
 
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode
 
 ### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production to the `build` folder
 
 ### `npm run eject`
-
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Security Notes
 
-## Learn More
+- Never commit API keys to version control
+- The `.env.local` file is excluded via `.gitignore`
+- In production, use a backend proxy instead of direct API calls
+- The current setup uses `dangerouslyAllowBrowser: true` for development only
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is licensed under the MIT License.
 
-### Code Splitting
+## Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For questions or issues, please open a GitHub issue or contact the development team.
