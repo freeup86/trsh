@@ -3,7 +3,7 @@ services:
     name: trsh-dashboard
     runtime: node
     plan: free
-    buildCommand: npm ci && npm run build
+    buildCommand: npm install && npm run build
     staticPublishPath: ./build
     pullRequestPreviewsEnabled: true
     headers:
@@ -16,6 +16,6 @@ services:
         destination: /index.html
     envVars:
       - key: NODE_VERSION
-        value: 18
+        value: 18.20.0
       - key: REACT_APP_ANTHROPIC_API_KEY
         sync: false
