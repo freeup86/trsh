@@ -214,19 +214,19 @@ Please respond in the following JSON format:
           {[
             {
               title: 'Minor Change',
-              subtitle: 'Est. Delay 0-1 days',
+              subtitle: 'Est. Delay 0-1 Days',
               description: 'Quick fixes like typos and simple clarifications. Handled rapidly to maintain content accuracy without disrupting workflow.',
               borderColor: colorPalette.lightBlue
             },
             {
               title: 'Significant Change',
-              subtitle: 'Est. Delay 5-10 days',
+              subtitle: 'Est. Delay 5-10 Days',
               description: 'Broader modifications affecting content or structure, requiring formal review and potentially pushing work to the next sprint.',
               borderColor: colorPalette.mediumBlue
             },
             {
               title: 'Major Change',
-              subtitle: 'Est. Delay 15+ days',
+              subtitle: 'Est. Delay 15+ Days',
               description: 'Substantial revisions to core content or strategy, requiring high-level approval and a potential pause in development.',
               borderColor: colorPalette.darkBlue
             }
