@@ -195,3 +195,74 @@ code {
 .btn-primary:hover .btn-icon {
   transform: scale(1.1);
 }
+
+/* App Title Styling */
+.app-title-container {
+  position: relative;
+  display: inline-block;
+}
+
+.app-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  font-family: 'Arial Black', Arial, sans-serif;
+  background: linear-gradient(135deg, #004e92 0%, #4285f4 50%, #74a9d8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+  text-shadow: 2px 2px 4px rgba(0, 78, 146, 0.1);
+  position: relative;
+}
+
+.app-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #004e92 0%, #4285f4 100%);
+  border-radius: 2px;
+}
+
+.app-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Responsive app title */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+  
+  .app-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+}

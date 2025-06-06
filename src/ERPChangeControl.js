@@ -201,6 +201,14 @@ Please respond in the following JSON format:
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <header className="text-center mb-12">
+          <div className="app-title-container mb-6">
+            <div className="app-title" style={{ color: colorPalette.darkBlue }}>
+              TRSH
+            </div>
+            <div className="app-subtitle" style={{ color: colorPalette.mediumBlue }}>
+              Training Resource Success Hub
+            </div>
+          </div>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-2" style={{ color: colorPalette.textColor }}>
             Streamlining Success
           </h1>
