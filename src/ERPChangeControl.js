@@ -303,27 +303,27 @@ Please respond in the following JSON format:
                   number: "1",
                   title: "Change Requested",
                   subtitle: "SME, OCM, or Process Initiated",
-                  color: colorPalette.darkBlue,
-                  lightColor: colorPalette.lightBlue
+                  color: colorPalette.mediumBlue,
+                  lightColor: colorPalette.veryLightBlue
                 },
                 {
                   number: "2",
                   title: "Evaluation",
                   subtitle: "VS Lead determines complexity",
-                  color: colorPalette.darkBlue,
-                  lightColor: colorPalette.lightBlue
+                  color: colorPalette.mediumBlue,
+                  lightColor: colorPalette.veryLightBlue
                 },
                 {
                   number: "3",
-                  title: "Pause & Communicate",
-                  subtitle: "Course is paused pending stakeholder approval",
+                  title: "Ticketing",
+                  subtitle: "VS Lead Submits Ticket",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 },
                 {
                   number: "4",
-                  title: "Ticketing",
-                  subtitle: "VS Lead Submits Ticket",
+                  title: "Pause & Communicate",
+                  subtitle: "Course is paused pending stakeholder approval",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 },
@@ -331,15 +331,15 @@ Please respond in the following JSON format:
                   number: "5",
                   title: "Stakeholder Notification",
                   subtitle: "Ticket defines request & identifies stakeholders",
-                  color: colorPalette.lightBlue,
-                  lightColor: '#e3f2fd'
+                  color: colorPalette.mediumBlue,
+                  lightColor: colorPalette.veryLightBlue
                 },
                 {
                   number: "6",
                   title: "Approval & Resumption",
                   subtitle: "VS Lead updates status to appropriate sprint",
-                  color: colorPalette.lightBlue,
-                  lightColor: '#e3f2fd'
+                  color: colorPalette.mediumBlue,
+                  lightColor: colorPalette.veryLightBlue
                 }
               ].map((step, index) => {
                 const startAngle = (index * 60) - 90;
@@ -486,7 +486,7 @@ Please respond in the following JSON format:
             <div className="grid grid-cols-3 gap-4">
               {Object.entries(stakeholderData).map(([key, data]) => (
                 <div key={key} className="text-center">
-                  <h4 className="font-semibold capitalize" style={{ color: colorPalette.darkBlue }}>
+                  <h4 className="font-semibold capitalize mb-2" style={{ color: colorPalette.darkBlue }}>
                     {key}
                   </h4>
                   <ResponsiveContainer width="100%" height={150}>
@@ -507,6 +507,31 @@ Please respond in the following JSON format:
                       <Tooltip />
                     </PieChart>
                   </ResponsiveContainer>
+                  {/* Individual Legend for each chart */}
+                  <div className="mt-2 flex justify-center gap-3">
+                    <div className="flex items-center gap-1">
+                      <div 
+                        className="rounded" 
+                        style={{ 
+                          backgroundColor: data[0].fill,
+                          width: '12px',
+                          height: '12px'
+                        }}
+                      ></div>
+                      <span className="text-xs text-gray-600">{data[0].name}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div 
+                        className="rounded" 
+                        style={{ 
+                          backgroundColor: data[1].fill,
+                          width: '12px',
+                          height: '12px'
+                        }}
+                      ></div>
+                      <span className="text-xs text-gray-600">{data[1].name}</span>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
