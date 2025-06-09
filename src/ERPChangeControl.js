@@ -58,8 +58,8 @@ const ERPChangeControl = () => {
   const developmentCycle = [
     {
       title: 'Alpha Draft (ISG)',
-      subtitle: '90% complete',
-      description: 'Gathering materials, AI assist, complete OUTLINE, e-LEARNING MODULE, FACILITATOR GUIDE & TRAINING DECK. QA before SME Review.'
+      subtitle: '4 business days',
+      description: 'Gathering materials, AI assist, complete Outline, e-Learning Module, Facilitator Guide & Training Deck. QA before SME Review.'
     },
     {
       title: 'Beta Revision (ISG)',
@@ -252,7 +252,7 @@ Please respond in the following JSON format:
           ))}
         </section>
 
-        {/* Change Control Flow */}
+        {/* Change Control Flow - Hidden
         <section className="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12">
           <h2 className="text-3xl font-bold text-center mb-2" style={{ color: colorPalette.textColor }}>
             The Change Control Flow
@@ -278,7 +278,7 @@ Please respond in the following JSON format:
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Change Process Request Workflow */}
         <section className="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12">
@@ -538,10 +538,10 @@ Please respond in the following JSON format:
           </div>
         </section>
 
-        {/* Ripple Effect and Resource Impact */}
+        {/* Ripple Effect and Resource Impact - Hidden
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Ripple Effect Chart */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          {/* <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-2xl font-bold text-center mb-2" style={{ color: colorPalette.textColor }}>
               The Ripple Effect of Major Changes
             </h3>
@@ -559,10 +559,10 @@ Please respond in the following JSON format:
                 <Tooltip />
               </RadarChart>
             </ResponsiveContainer>
-          </div>
+          </div> */}
 
           {/* Resource Impact */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          {/* <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-2xl font-bold text-center mb-2" style={{ color: colorPalette.textColor }}>
               Resource Impact
             </h3>
@@ -582,8 +582,8 @@ Please respond in the following JSON format:
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+          </div> */}
+        {/* </section> */}
 
         {/* Development Cycle */}
         <section className="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12">
