@@ -179,7 +179,7 @@ export const trainingDataProcessor = {
     const { complexityScore, estimatedDelay, riskFactors } = analysis;
 
     // Classification based on historical thresholds
-    if (estimatedDelay <= 1 && complexityScore < 0.3 && riskFactors.length === 0) {
+    if (estimatedDelay <= 4 && complexityScore < 0.3 && riskFactors.length === 0) {
       return {
         classification: 'Minor Change',
         justification: 'Historical data indicates minimal complexity and risk. Similar changes typically complete within 1 day with no significant delays.',
