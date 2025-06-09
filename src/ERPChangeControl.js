@@ -51,7 +51,7 @@ const ERPChangeControl = () => {
     { title: 'Request Submitted', subtitle: '' },
     { title: 'Initial Assessment', subtitle: '' },
     { title: 'Categorization', subtitle: '' },
-    { title: 'Stakeholder Approval', subtitle: '' },
+    { title: 'Initiate Change Process Request', subtitle: '' },
     { title: 'Implementation', subtitle: '' }
   ];
 
@@ -260,21 +260,182 @@ Please respond in the following JSON format:
           <p className="text-center text-gray-600 max-w-3xl mx-auto mb-8">
             This process ensures every change request is efficiently identified, assessed, and dispositioned, guaranteeing alignment and quality from submission to resolution.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-4">
-            {flowSteps.map((step, index) => (
-              <React.Fragment key={index}>
-                <div
-                  className="flex flex-col items-center justify-center text-center p-4 rounded-lg shadow"
-                  style={{ backgroundColor: colorPalette.veryLightBlue, minHeight: '100px', minWidth: '150px' }}
-                >
-                  <h4 className="font-semibold">{step.title}</h4>
-                  {step.subtitle && <p className="text-sm text-gray-600 mt-1">{step.subtitle}</p>}
-                </div>
-                {index < flowSteps.length - 1 && (
-                  <ArrowRight className="mx-2" size={28} color={colorPalette.mediumBlue} style={{ strokeWidth: 2.5 }} />
-                )}
-              </React.Fragment>
-            ))}
+          <div className="overflow-x-auto">
+            <div className="flex flex-nowrap justify-center items-center gap-2 min-w-max px-4">
+              {flowSteps.map((step, index) => (
+                <React.Fragment key={index}>
+                  <div
+                    className="flex flex-col items-center justify-center text-center p-3 rounded-lg shadow flex-shrink-0"
+                    style={{ backgroundColor: colorPalette.veryLightBlue, minHeight: '90px', width: '140px' }}
+                  >
+                    <h4 className={`text-sm ${step.title === 'Initiate Change Process Request' ? "font-bold" : "font-semibold"}`}>{step.title}</h4>
+                    {step.subtitle && <p className="text-xs text-gray-600 mt-1">{step.subtitle}</p>}
+                  </div>
+                  {index < flowSteps.length - 1 && (
+                    <ArrowRight className="flex-shrink-0" size={24} color={colorPalette.mediumBlue} style={{ strokeWidth: 2.5 }} />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Change Process Request Workflow */}
+        <section className="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12">
+          <h2 className="text-3xl font-bold text-center mb-2" style={{ color: colorPalette.textColor }}>
+            Change Process Request Workflow
+          </h2>
+          <p className="text-center text-gray-600 max-w-3xl mx-auto mb-8">
+            Once a change is assessed, it enters this workflow to ensure proper evaluation, communication, and approval before implementation.
+          </p>
+          
+          {/* Circular Workflow - Pie Chart Style */}
+          <div className="w-full flex justify-center">
+            <svg
+              width="600"
+              height="600"
+              viewBox="0 0 600 600"
+              className="max-w-full h-auto"
+            >
+              {/* Pie slices */}
+              {[
+                {
+                  number: "1",
+                  title: "Change Requested",
+                  subtitle: "SME, OCM, or Process Initiated",
+                  color: colorPalette.darkBlue,
+                  lightColor: colorPalette.lightBlue
+                },
+                {
+                  number: "2",
+                  title: "Evaluation",
+                  subtitle: "VS Lead determines complexity",
+                  color: colorPalette.darkBlue,
+                  lightColor: colorPalette.lightBlue
+                },
+                {
+                  number: "3",
+                  title: "Pause & Communicate",
+                  subtitle: "Course is paused pending stakeholder approval",
+                  color: colorPalette.mediumBlue,
+                  lightColor: colorPalette.veryLightBlue
+                },
+                {
+                  number: "4",
+                  title: "Ticketing",
+                  subtitle: "VS Lead Submits Ticket",
+                  color: colorPalette.mediumBlue,
+                  lightColor: colorPalette.veryLightBlue
+                },
+                {
+                  number: "5",
+                  title: "Stakeholder Notification",
+                  subtitle: "Ticket defines request & identifies stakeholders",
+                  color: colorPalette.lightBlue,
+                  lightColor: '#e3f2fd'
+                },
+                {
+                  number: "6",
+                  title: "Approval & Resumption",
+                  subtitle: "VS Lead updates status to appropriate sprint",
+                  color: colorPalette.lightBlue,
+                  lightColor: '#e3f2fd'
+                }
+              ].map((step, index) => {
+                const startAngle = (index * 60) - 90;
+                const endAngle = ((index + 1) * 60) - 90;
+                const outerRadius = 280;
+                const innerRadius = 100;
+                
+                // Calculate path for pie slice
+                const x1 = 300 + Math.cos(startAngle * Math.PI / 180) * outerRadius;
+                const y1 = 300 + Math.sin(startAngle * Math.PI / 180) * outerRadius;
+                const x2 = 300 + Math.cos(endAngle * Math.PI / 180) * outerRadius;
+                const y2 = 300 + Math.sin(endAngle * Math.PI / 180) * outerRadius;
+                const x3 = 300 + Math.cos(startAngle * Math.PI / 180) * innerRadius;
+                const y3 = 300 + Math.sin(startAngle * Math.PI / 180) * innerRadius;
+                const x4 = 300 + Math.cos(endAngle * Math.PI / 180) * innerRadius;
+                const y4 = 300 + Math.sin(endAngle * Math.PI / 180) * innerRadius;
+                
+                // Text positioning - moved inward for better fit
+                const midAngle = startAngle + 30;
+                const textRadius = innerRadius + ((outerRadius - innerRadius) * 0.55);
+                const textX = 300 + Math.cos(midAngle * Math.PI / 180) * textRadius;
+                const textY = 300 + Math.sin(midAngle * Math.PI / 180) * textRadius;
+                
+                return (
+                  <g key={index}>
+                    {/* Pie slice */}
+                    <path
+                      d={`M ${x3} ${y3} L ${x1} ${y1} A ${outerRadius} ${outerRadius} 0 0 1 ${x2} ${y2} L ${x4} ${y4} A ${innerRadius} ${innerRadius} 0 0 0 ${x3} ${y3}`}
+                      fill={step.lightColor}
+                      stroke="white"
+                      strokeWidth="3"
+                      className="hover:opacity-80 transition-opacity cursor-pointer"
+                    />
+                    
+                    {/* Number circle - positioned at inner edge */}
+                    <circle
+                      cx={300 + Math.cos(midAngle * Math.PI / 180) * 110}
+                      cy={300 + Math.sin(midAngle * Math.PI / 180) * 110}
+                      r="15"
+                      fill={step.color}
+                      stroke="white"
+                      strokeWidth="2"
+                    />
+                    <text
+                      x={300 + Math.cos(midAngle * Math.PI / 180) * 110}
+                      y={300 + Math.sin(midAngle * Math.PI / 180) * 110}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      fill="white"
+                      fontSize="12"
+                      fontWeight="bold"
+                    >
+                      {step.number}
+                    </text>
+                    
+                    {/* Title text */}
+                    <text
+                      x={textX}
+                      y={textY - 10}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      fill={colorPalette.darkBlue}
+                      fontSize="13"
+                      fontWeight="bold"
+                    >
+                      {step.title}
+                    </text>
+                    
+                    {/* Subtitle text - wrapped */}
+                    <foreignObject
+                      x={textX - 55}
+                      y={textY}
+                      width="110"
+                      height="45"
+                    >
+                      <div className="text-center">
+                        <p className="text-xs text-gray-600 leading-tight break-words" style={{ fontSize: '11px' }}>
+                          {step.subtitle}
+                        </p>
+                      </div>
+                    </foreignObject>
+                    
+                  </g>
+                );
+              })}
+              
+              {/* Center circle */}
+              <circle
+                cx="300"
+                cy="300"
+                r="95"
+                fill="white"
+                stroke={colorPalette.veryLightBlue}
+                strokeWidth="2"
+              />
+            </svg>
           </div>
         </section>
 
