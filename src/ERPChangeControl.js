@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { LineChart, Line, BarChart, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { ArrowRight, FileText, MessageSquare, RotateCw, Award, Search, Users, UserPlus, Clock, AlertCircle } from 'lucide-react';
 import Anthropic from '@anthropic-ai/sdk';
+import { trainingDataProcessor } from './trainingDataProcessor';
 
 const ERPChangeControl = () => {
   const [changeDescription, setChangeDescription] = useState('');
@@ -113,38 +114,32 @@ const ERPChangeControl = () => {
       const apiKey = process.env.REACT_APP_ANTHROPIC_API_KEY;
       
       if (!apiKey || apiKey === 'your_anthropic_api_key_here') {
-        // Fallback to simulated logic if no API key
+        // Use enhanced prediction model based on historical data
         setTimeout(() => {
-          const description = changeDescription.toLowerCase();
-          let classification = '';
-          let justification = '';
-          let daysDelay = 0;
-
-          if (description.includes('typo') || description.includes('screenshot') || description.includes('minor') || description.includes('small')) {
-            classification = 'Minor Change';
-            justification = 'This appears to be a simple correction or update that doesn\'t affect the overall content structure or meaning. It can be implemented quickly without disrupting the development workflow.';
-            daysDelay = 0;
-          } else if (description.includes('module') || description.includes('process') || description.includes('significant') || description.includes('structure')) {
-            classification = 'Significant Change';
-            justification = 'This change affects content structure or requires broader modifications. It will need formal review and may impact the current sprint timeline, requiring coordination with multiple stakeholders.';
-            daysDelay = Math.floor(Math.random() * 5) + 5; // 5-9 days
-          } else if (description.includes('major') || description.includes('scope') || description.includes('complete') || description.includes('strategy') || description.includes('overhaul')) {
-            classification = 'Major Change';
-            justification = 'This represents a substantial revision to core content or strategic direction. It requires high-level approval, impacts multiple project areas, and may necessitate a development pause for re-planning.';
-            daysDelay = Math.floor(Math.random() * 11) + 15; // 15-25 days
-          } else {
-            classification = 'Significant Change';
-            justification = 'Based on the description, this change appears to have moderate impact on the training materials and will require standard review processes.';
-            daysDelay = Math.floor(Math.random() * 5) + 5; // 5-9 days
-          }
-
-          setPrediction({ classification, justification, daysDelay });
+          const analysis = trainingDataProcessor.analyzeChange(changeDescription);
+          const result = trainingDataProcessor.classifyChange(analysis);
+          
+          // Add analysis details to the result
+          const enhancedResult = {
+            ...result,
+            analysisDetails: {
+              valueStreams: analysis.valueStreams,
+              riskFactors: analysis.riskFactors.map(r => r.factor),
+              complexityScore: Math.round(analysis.complexityScore * 100),
+              confidence: Math.round(analysis.confidence * 100)
+            }
+          };
+          
+          setPrediction(enhancedResult);
           setIsLoading(false);
         }, 1500);
         return;
       }
 
-      // Use Claude API
+      // Use Claude API with enhanced context from historical data
+      const analysis = trainingDataProcessor.analyzeChange(changeDescription);
+      const historicalResult = trainingDataProcessor.classifyChange(analysis);
+      
       const anthropic = new Anthropic({
         apiKey: apiKey,
         dangerouslyAllowBrowser: true, // Note: In production, you should use a backend proxy
@@ -153,15 +148,24 @@ const ERPChangeControl = () => {
         }
       });
 
-      const prompt = `You are an expert in ERP training change management. Your task is to classify a proposed change into one of three categories: 'Minor Change', 'Significant Change', or 'Major Change' and the number of days delay. Provide a brief justification for your classification based on typical impacts in ERP training projects.
+      const prompt = `You are an expert in ERP training change management with access to historical project data. Your task is to classify a proposed change into one of three categories: 'Minor Change', 'Significant Change', or 'Major Change' and estimate the days delay.
 
 Change description: "${changeDescription}"
+
+Historical analysis suggests:
+- Affected value streams: ${analysis.valueStreams.length > 0 ? analysis.valueStreams.join(', ') : 'Not identified'}
+- Risk factors detected: ${analysis.riskFactors.map(r => r.factor).join(', ') || 'None'}
+- Complexity score: ${Math.round(analysis.complexityScore * 100)}%
+- Initial estimate: ${historicalResult.classification} with ${historicalResult.daysDelay} days delay
+- Confidence level: ${Math.round(analysis.confidence * 100)}%
+
+Please provide your expert assessment, considering this historical context and your knowledge of ERP training projects.
 
 Please respond in the following JSON format:
 {
   "classification": "Minor Change|Significant Change|Major Change",
   "daysDelay": number,
-  "justification": "brief explanation"
+  "justification": "brief explanation incorporating historical insights"
 }`;
 
       const message = await anthropic.messages.create({
@@ -181,7 +185,13 @@ Please respond in the following JSON format:
       setPrediction({
         classification: parsedResponse.classification,
         justification: parsedResponse.justification,
-        daysDelay: parsedResponse.daysDelay
+        daysDelay: parsedResponse.daysDelay,
+        analysisDetails: {
+          valueStreams: analysis.valueStreams,
+          riskFactors: analysis.riskFactors.map(r => r.factor),
+          complexityScore: Math.round(analysis.complexityScore * 100),
+          confidence: Math.round(analysis.confidence * 100)
+        }
       });
       
     } catch (error) {
@@ -364,14 +374,36 @@ Please respond in the following JSON format:
                 const textY = 300 + Math.sin(midAngle * Math.PI / 180) * textRadius;
                 
                 return (
-                  <g key={index}>
+                  <g 
+                    key={index} 
+                    className="cursor-pointer"
+                    onMouseEnter={() => {
+                      const path = document.getElementById(`pie-slice-${index}`);
+                      if (path) {
+                        path.style.filter = 'brightness(1.1)';
+                        path.style.strokeWidth = '4';
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      const path = document.getElementById(`pie-slice-${index}`);
+                      if (path) {
+                        path.style.filter = 'brightness(1)';
+                        path.style.strokeWidth = '3';
+                      }
+                    }}
+                  >
                     {/* Pie slice */}
                     <path
+                      id={`pie-slice-${index}`}
                       d={`M ${x3} ${y3} L ${x1} ${y1} A ${outerRadius} ${outerRadius} 0 0 1 ${x2} ${y2} L ${x4} ${y4} A ${innerRadius} ${innerRadius} 0 0 0 ${x3} ${y3}`}
                       fill={step.lightColor}
                       stroke="white"
                       strokeWidth="3"
-                      className="hover:opacity-80 transition-opacity cursor-pointer"
+                      className="transition-all duration-200"
+                      style={{
+                        filter: 'brightness(1)',
+                        pointerEvents: 'all'
+                      }}
                     />
                     
                     {/* Number circle - positioned at inner edge */}
@@ -404,6 +436,7 @@ Please respond in the following JSON format:
                       fill={colorPalette.darkBlue}
                       fontSize="13"
                       fontWeight="bold"
+                      style={{ pointerEvents: 'none' }}
                     >
                       {step.title}
                     </text>
@@ -414,9 +447,10 @@ Please respond in the following JSON format:
                       y={textY}
                       width="110"
                       height="45"
+                      style={{ pointerEvents: 'none' }}
                     >
                       <div className="text-center">
-                        <p className="text-xs text-gray-600 leading-tight break-words" style={{ fontSize: '11px' }}>
+                        <p className="text-xs text-gray-600 leading-tight break-words" style={{ fontSize: '11px', pointerEvents: 'none' }}>
                           {step.subtitle}
                         </p>
                       </div>
@@ -468,7 +502,24 @@ Please respond in the following JSON format:
                 />
                 <Bar dataKey="days" fill={colorPalette.mediumBlue}>
                   {scheduleImpactData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.fill} />
+                    <Cell 
+                      key={`cell-${index}`} 
+                      fill={entry.fill}
+                      style={{ 
+                        filter: 'brightness(1)',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.filter = 'brightness(1.1)';
+                        e.target.style.transform = 'scaleY(1.05)';
+                        e.target.style.transformOrigin = 'bottom';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.filter = 'brightness(1)';
+                        e.target.style.transform = 'scaleY(1)';
+                      }}
+                    />
                   ))}
                 </Bar>
               </BarChart>
@@ -501,35 +552,53 @@ Please respond in the following JSON format:
                         dataKey="value"
                       >
                         {data.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry.fill} />
+                          <Cell 
+                            key={`cell-${index}`} 
+                            fill={entry.fill}
+                            style={{ 
+                              filter: 'brightness(1)',
+                              cursor: 'pointer',
+                              transition: 'all 0.2s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.target.style.filter = 'brightness(1.1)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.target.style.filter = 'brightness(1)';
+                            }}
+                          />
                         ))}
                       </Pie>
                       <Tooltip />
                     </PieChart>
                   </ResponsiveContainer>
                   {/* Individual Legend for each chart */}
-                  <div className="mt-2 flex justify-center gap-3">
-                    <div className="flex items-center gap-1">
-                      <div 
-                        className="rounded" 
-                        style={{ 
-                          backgroundColor: data[0].fill,
-                          width: '12px',
-                          height: '12px'
-                        }}
-                      ></div>
-                      <span className="text-xs text-gray-600">{data[0].name}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <div 
-                        className="rounded" 
-                        style={{ 
-                          backgroundColor: data[1].fill,
-                          width: '12px',
-                          height: '12px'
-                        }}
-                      ></div>
-                      <span className="text-xs text-gray-600">{data[1].name}</span>
+                  <div className="mt-2 w-full flex justify-center">
+                    <div className="flex flex-col items-start gap-1">
+                      <div className="flex items-center">
+                        <div 
+                          className="rounded" 
+                          style={{ 
+                            backgroundColor: data[0].fill,
+                            width: '12px',
+                            height: '12px',
+                            marginRight: '8px'
+                          }}
+                        ></div>
+                        <span className="text-xs text-gray-600">{data[0].name} ({data[0].value})</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div 
+                          className="rounded" 
+                          style={{ 
+                            backgroundColor: data[1].fill,
+                            width: '12px',
+                            height: '12px',
+                            marginRight: '8px'
+                          }}
+                        ></div>
+                        <span className="text-xs text-gray-600">{data[1].name} ({data[1].value})</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -619,10 +688,10 @@ Please respond in the following JSON format:
         {/* Training Impact Predictor */}
         <section className="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12">
           <h2 className="text-3xl font-bold text-center mb-4" style={{ color: colorPalette.textColor }}>
-            ✨ Training Impact Predictor ✨
+            ✨ Enhanced Training Impact Predictor ✨
           </h2>
           <p className="text-center text-gray-600 max-w-3xl mx-auto mb-6">
-            Describe a proposed change to your ERP training materials below, and our AI assistant will help categorize its likely impact (Minor, Significant, or Major) and provide a brief justification.
+            Our enhanced AI predictor uses historical data from 335+ courses and 1,500+ modules to analyze your proposed change. It identifies value streams, risk factors, and complexity patterns based on real project outcomes to provide accurate impact predictions.
           </p>
           <div className="flex flex-col items-center">
             <textarea
@@ -631,7 +700,7 @@ Please respond in the following JSON format:
               className="w-full max-w-xl p-3 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2"
               style={{ focusRingColor: colorPalette.darkBlue }}
               rows={6}
-              placeholder="e.g., 'Update a screenshot in a single module to reflect new UI element.' or 'Add a completely new process module due to scope change.'"
+              placeholder="e.g., 'Update R2R tax accounting module for new SAP S/4 HANA process' or 'Major revision to O2C billing training due to scope change in ITC3 phase' or 'Fix typo in P2P procurement guide'"
             />
             <button
               onClick={predictImpact}
@@ -652,11 +721,31 @@ Please respond in the following JSON format:
             {prediction && !isLoading && (
               <div className="mt-6 p-4 w-full max-w-xl bg-gray-100 rounded-md">
                 <h4 className="font-semibold mb-2" style={{ color: colorPalette.darkBlue }}>
-                  Prediction:
+                  Enhanced Prediction Results:
                 </h4>
-                <p className="font-semibold">Classification: {prediction.classification}</p>
-                <p className="font-semibold">Estimated Delay: {prediction.daysDelay === 0 ? 'No delay' : `${prediction.daysDelay} business days`}</p>
-                <p className="mt-2">Justification: {prediction.justification}</p>
+                <div className="space-y-2">
+                  <p className="font-semibold">Classification: {prediction.classification}</p>
+                  <p className="font-semibold">Estimated Delay: {prediction.daysDelay === 0 ? 'No delay' : `${prediction.daysDelay} business days`}</p>
+                  <p className="mt-2"><strong>Justification:</strong> {prediction.justification}</p>
+                  
+                  {prediction.analysisDetails && (
+                    <div className="mt-3 pt-3 border-t border-gray-300">
+                      <h5 className="text-sm font-semibold mb-2" style={{ color: colorPalette.mediumBlue }}>
+                        Historical Analysis:
+                      </h5>
+                      <div className="text-sm space-y-1">
+                        {prediction.analysisDetails.valueStreams.length > 0 && (
+                          <p><strong>Value Streams:</strong> {prediction.analysisDetails.valueStreams.join(', ')}</p>
+                        )}
+                        {prediction.analysisDetails.riskFactors.length > 0 && (
+                          <p><strong>Risk Factors:</strong> {prediction.analysisDetails.riskFactors.join(', ')}</p>
+                        )}
+                        <p><strong>Complexity Score:</strong> {prediction.analysisDetails.complexityScore}%</p>
+                        <p><strong>Confidence Level:</strong> {prediction.analysisDetails.confidence}%</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>
