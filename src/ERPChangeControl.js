@@ -134,10 +134,8 @@ const ERPChangeControl = () => {
       const result = await response.json();
       setSaveStatus('saved');
       
-      // Create Outlook email for Significant or Major changes
-      if (editableClassification === 'Significant Change' || editableClassification === 'Major Change') {
-        createOutlookEmail();
-      }
+      // Create Outlook email for all classification types
+      createOutlookEmail();
       
       // Clear save status after 3 seconds
       setTimeout(() => setSaveStatus(null), 3000);
