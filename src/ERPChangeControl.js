@@ -592,14 +592,14 @@ Please respond in the following JSON format:
                     
                     {/* Subtitle text - wrapped */}
                     <foreignObject
-                      x={textX - 55}
+                      x={textX - 65}
                       y={textY}
-                      width="110"
-                      height="45"
+                      width="130"
+                      height="50"
                       style={{ pointerEvents: 'none' }}
                     >
                       <div className="text-center">
-                        <p className="text-xs text-gray-600 leading-tight break-words" style={{ fontSize: '11px', pointerEvents: 'none' }}>
+                        <p className="text-xs text-gray-600 leading-tight break-words" style={{ fontSize: '10px', pointerEvents: 'none' }}>
                           {step.subtitle}
                         </p>
                       </div>
