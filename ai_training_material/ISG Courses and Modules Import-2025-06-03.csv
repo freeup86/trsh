@@ -1,0 +1,335 @@
+﻿Course Name,Course Code,Modality,Standard Course Hours,Developer,Target Start Date,Actual Start Date,Target Finish Date,Actual Finish Date,Phase,Risk Status,Course Status Notes,Product,Value Stream
+Template for ILT/VILT Courses,868c6ufk0,WBT,0.5,ISG,1/16/25,1/31/25,3/28/25,2/21/25,Complete,On Track,Development Complete,SAP S/4 HANA,ALL
+ALL AREAS SAP S/4HANA: Essentials & Navigation,868awzyaw,WBT,0.5,ISG,7/28/25,11/1/24,8/22/25,,Alpha Development,On Track,,SAP S/4 HANA,ALL
+DAP Support Navigation Course,868c6m9h9,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,ALL
+Asset Accounting: Asset Reinstatement,868c0428w,WBT,0.5,ISG,1/15/25,2/26/25,3/28/25,4/8/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Asset Sales,868c03rxt,WBT,0.5,ISG,1/15/25,2/26/25,3/28/25,4/8/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Capitalizing Assets,868c033tx,WBT,0.5,ISG,1/15/25,2/19/25,3/28/25,4/3/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Change or Renew Contract,868c03yda,WBT,0.5,ISG,5/5/25,2/14/25,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+Asset Accounting: Commissioning Assets,868cktqar,WBT,0.5,ISG,1/15/25,2/13/25,3/28/25,3/20/25,Final Approval,On Track,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Depreciation Adjustments,868c03882,WBT,0.5,ISG,1/15/25,2/22/25,3/28/25,4/8/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Depreciation/Amortization Job Run & Review,868c043t3,WBT,0.5,ISG,1/15/25,2/19/25,3/28/25,3/26/25,Final Approval,On Track,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Inter-Company Asset Transfer,868c053xr,WBT,0.5,ISG,1/15/25,2/26/25,3/28/25,4/3/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Intra-Company Asset Transfer,868c03qur,WBT,0.5,ISG,1/15/25,2/26/25,3/28/25,4/3/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Maintain Master Data in Lease Accounting Module,868c0fyq2,WBT,0.5,ISG,5/5/25,2/26/25,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+Asset Accounting: New Lease Contract Payment Schedule,868c07676,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+Asset Accounting: New Lease Contract Valuation (Post Run),868c0ft3w,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+Asset Accounting: New Lease Contract Valuation (Test Run),868c0fwep,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+Asset Accounting: Retire Assets,868c03z42,WBT,0.5,ISG,1/15/25,2/27/25,3/28/25,3/31/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Accounting: Run Payment Posting Job,868c054zk,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+Asset Accounting: Software Licenses Ad Hoc Reporting,868c052wj,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+Asset Accounting: Software Licenses Maintain,868c03znu,WBT,0.5,ISG,5/5/25,2/13/25,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+"Asset Management: Approve, Edit, or Reject a Loss Report",868c0ey9j,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Asset Acquisition SAP and PIEE Interface,868c0g1dr,WBT,0.5,ISG,5/12/25,1/28/25,6/6/25,,Alpha Development,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Asset Transfer Records,868decc09,WBT,0.5,ISG,4/28/25,4/18/25,5/23/25,5/27/25,Final Approval,On Track,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Management: Change Equipment,868c07d42,WBT,0.5,ISG,4/28/25,4/15/25,5/23/25,5/15/25,Final Approval,On Track,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Management: Create Equipment,868c05dh1,WBT,0.5,ISG,4/28/25,4/17/25,5/23/25,5/15/25,Final Approval,On Track,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Management: Creating a Custodian Transfer,868c0euff,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Display Equipment,868c0egxp,WBT,0.5,ISG,4/28/25,4/18/25,5/23/25,5/15/25,Final Approval,On Track,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Management: Disposition an Asset Prepare a Loss Report,868c0f042,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Disposition Equipment Self-Service,868c0ex67,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Equipment Disposition Final User Statuses,868c0f20b,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Equipment Disposition Notifications,868c0f369,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Equipment Disposition Post-Disposition,868c0f0v9,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Equipment Disposition Records and Requirements,868c0f41w,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Inventory Counts,868c0ejxa,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Monitor Periodic and One-Time Activities,868c0emb4,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Preparing for an Equipment Transfer,868c0ewgt,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Print Property Tags,868c394z2,WBT,0.5,ISG,1/15/25,3/6/25,3/28/25,4/15/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Asset Management: Review a Custodian Transfer,868c0enzz,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+Asset Management: Review a Loss Report,868c0eza6,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,A2R
+CLRP Capital and Overhead: Overview and System Navigation,868a2vbxu,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital:  Change Requests,868c0tzq4,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Approval Workflow,868c0uctc,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Capital Project Closeout,868c0tu34,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Change Request Workflow,868c0tybt,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Create Plan Item and Enter Financial and Labor Plan,868c0qr9k,WBT,0.5,ISG,5/12/25,5/19/25,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Forecast Depreciation Model (SAP Analytics Cloud),868c0tt5m,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA;SAP Analytics Cloud (SAC),A2R
+CLRP Capital: Manage Plan Financials,868ddhb41,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Managing Project Performance,868ddj3nt,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Post Approval Request Automations,868ddj1td,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Prioritize Plan Items Inputs,868c0u5nk,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Project Approval Request Submission,868ddhk2p,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Reset Decision Points,868ddjhtw,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Set Targets,868ddgthj,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Capital: Upload Plan Items in Bulk (Possibly Descope?),868ddm5wf,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Approval Workflow,868ddhxa4,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Create Plan Item and Enter Financial and Labor Plan,868ddm192,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Manage Plan Financials,868ddhpmb,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Managing Project Performance,868ddj4ay,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Overhead Project Closeout,868c0tw8v,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Prioritize Plan Items Inputs,868ddh3a9,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Project Approval Request Submission Non-Stat Emergent,868ddhuc3,WBT,0.5,ISG,5/12/25,5/28/25,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Project Approval Request Submission Stat Project With no Plan,868ddmdu4,WBT,0.5,ISG,5/12/25,5/29/25,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Project Approval Request Submission Stat with Plan,868ddhurb,WBT,0.5,ISG,5/12/25,5/29/25,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP Overhead: Upload Plan Items in Bulk (Possibly Descope?),868ddm6f3,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP: EPPM Admin Tasks Capital and Overhead,868c0wh7b,WBT,0.5,ISG,5/12/25,,6/6/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+CLRP: Update Capital Plan Items,868c0u6gn,WBT,0.5,ISG,5/12/25,5/2/25,6/6/25,5/22/25,Final Approval,On Track,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Controlled Tooling: Hard/Durable Tooling: Handling,868c0fcvf,WBT,0.5,ISG,4/28/25,5/21/25,5/23/25,,Final Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Hard/Durable Tooling: Inspection,868c0fe1w,WBT,0.5,ISG,4/28/25,4/22/25,5/23/25,,Final Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Hard/Durable Tooling: Location Management,868c0fpq7,WBT,0.5,ISG,4/28/25,4/28/25,5/23/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Hard/Durable Tooling: Maintenance Part A,868c0fg88,WBT,0.5,ISG,4/28/25,4/10/25,5/23/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Hard/Durable Tooling: Maintenance Part B,868dfz666,WBT,0.5,ISG,4/28/25,4/24/25,5/23/25,,Final Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Hard/Durable Tooling: Work Order Flow,868c0f92c,WBT,0.5,ISG,5/5/25,5/5/25,5/30/25,,Final Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Perishable Tooling Part A,868c0f61w,WBT,0.5,ISG,4/28/25,4/22/25,5/23/25,,Final Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Perishable Tooling Part B,868dfzm17,WBT,0.5,ISG,4/28/25,4/23/25,5/23/25,,Final Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Preliminary Tasks for Hard/Durable Tooling,868c0fqu7,WBT,0.5,ISG,5/5/25,5/8/25,5/30/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Controlled Tooling: Provide Disposition,868c0f7ea,WBT,0.5,ISG,5/5/25,5/5/25,5/30/25,,Final Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,A2R
+Lease Lifecycle Management: Create Catch Up Journal Entry - Manual,868c02ej2,WBT,0.5,ISG,5/12/25,1/14/25,3/28/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,A2R
+Lease Lifecycle Management: Run Integration of Payment Inbound File to LMBldgs,868c02kbb,WBT,0.5,ISG,10/1/24,1/23/25,2/27/2025,3/12/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Lease Lifecycle Management: View Monthly Journal Entries,868c02mmv,WBT,0.5,ISG,10/1/24,1/23/25,2/27/2025,3/12/25,Final Approval,Behind Schedule,Complete pending update of Change Impacts,SAP S/4 HANA,A2R
+Metrology: Asset Management,868c0u9te,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,A2R
+Metrology: Asset Receiving,868dkzeyb,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,A2R
+Metrology: Calibration Request (Exit),868c0taj7,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,A2R
+Metrology: Calibration Requests,868c0ub81,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,A2R
+Metrology: IndySoft,868c0tkqd,WBT,0.5,ISG,7/14/25,10/27/24,8/8/25,,Not Started,On Track,,IndySoft,A2R
+Metrology: IndySoft Overview,868c0tdmb,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,IndySoft,A2R
+Metrology: IndySoft: Asset Creation Records,868c0tf4x,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,IndySoft,A2R
+Metrology: IndySoft: Calibration Event,868c0tqp1,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,IndySoft,A2R
+Metrology: IndySoft: External Vendors,868c0tpmz,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,IndySoft,A2R
+Metrology: IndySoft: Quality Controls,868c0tgdv,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,IndySoft,A2R
+Metrology: Limitation Requests,868c0qunf,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,A2R
+Metrology: Metrology and Calibration Troubleshooting,868a2vamk,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,A2R
+Metrology: SAP to S/4 System: Changes to the Property Management System,868c0eee9,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,A2R
+AR: Apply Cash,868c00xax,ILT,1,ISG,5/19/25,,6/13/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,O2C
+AR: Dispute Management,868c011pt,ILT,1,ISG,5/19/25,,6/13/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,O2C
+AR: Work with Unapplied Cash,868c00y1d,ILT,1,ISG,5/19/25,,6/13/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,O2C
+Billing: Confirm Billing Eligibility,868c01j8v,WBT,0.5,ISG,5/12/25,6/2/25,6/6/25,,Alpha Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Costing Sheets and Burdening,868dy5a5y,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Generate and Attach Invoices,868c01f57,WBT,0.5,ISG,5/12/25,5/29/25,6/6/25,,Alpha Development,Behind Schedule,System Access Needed,SAP S/4 HANA,O2C
+Billing: Legacy Rate Year Interface,868dy5qb5,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Perform Billing with Financing,868c01kzg,WBT,0.5,ISG,5/19/25,6/2/25,6/13/25,,Alpha Development,Behind Schedule,Script Defect,SAP S/4 HANA,O2C
+Billing: Perform BPMI Billing,868c01nga,WBT,0.5,ISG,5/12/25,5/30/25,6/6/25,,Alpha Development,Behind Schedule,Script Defect,SAP S/4 HANA,O2C
+Billing: Perform Cost-Base Billing,868c01rhv,WBT,0.5,ISG,5/12/25,5/19/25,6/6/25,,Alpha Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Perform Fixed-Price Billing,868c01k8d,WBT,0.5,ISG,5/12/25,5/21/25,6/6/25,,Alpha Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Perform Time & Material Billing,868c01t4m,WBT,0.5,ISG,5/12/25,5/30/25,6/6/25,,Alpha Development,Behind Schedule,Script Defect,SAP S/4 HANA,O2C
+Billing: Planned Version Upload,868dy5jw9,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Post Invoice,868c01p1c,ILT,1,ISG,5/12/25,6/2/25,6/6/25,,Beta Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Previously Billed Process,868dy5ekr,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Transmit Invoices and Back-Up,868c01fzy,WBT,0.5,ISG,5/19/25,5/30/25,6/13/25,,Alpha Development,Behind Schedule,System Access Needed,SAP S/4 HANA,O2C
+Billing: Work with Billing Documents,868c01gmq,WBT,0.5,ISG,5/19/25,5/22/25,6/13/25,,Alpha Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Billing: Work with Manual Invoices,868drcrh0,WBT,0.5,ISG,5/12/25,5/22/25,6/6/25,,Alpha Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,O2C
+Sales Orders: Create Sales Order,868dh617q,ILT,1,ISG,5/19/25,5/9/25,6/13/25,,Alpha Development,On Track,,SAP S/4 HANA,O2C
+Sales Orders: Update Sales Order,868dh6g2m,ILT,1,ISG,5/19/25,5/29/25,6/13/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,O2C
+Sales Orders: Validate Sales Order,868dh6a78,ILT,1,ISG,5/19/25,5/16/25,6/13/25,,Alpha Development,On Track,,SAP S/4 HANA,O2C
+AR: Monitor Payments & Status,868c013rg,ILT,1,ISG,6/23/25,,7/18/25,,Design,On Track,Paused due to Curriculum redesign,SAP S/4 HANA,O2C
+AR: Contact Customer to Collect Cash,868c0137q,WBT,0.5,ISG,6/30/25,,7/25/25,,Design,On Track,Paused due to Curriculum redesign,SAP S/4 HANA,O2C
+Contracts: Work with Requests,868bzz0gp,ILT,1,ISG,6/30/25,,7/25/25,,Design,On Track,Paused due to Curriculum redesign,SAP S/4 HANA,O2C
+Incurred Cost Claim: Other Systems & Data Collection,868a2uwfv,ILT,1,ISG,6/30/25,,7/25/25,,Beta Review,On Track,,Cognitus; SAP S/4 HANA,PLP
+Incurred Cost Claim: Preparing for Submission,868a2uwfh,ILT,1,ISG,6/30/25,3/24/25,7/25/25,,Beta Development,On Track,,Cognitus; SAP S/4 HANA,PLP
+PS: Create Account Assignment Charge Numbers,868bzj218,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+PS: Create Account Assignment Charge Numbers for Customer Projects,868bzngtq,WBT,0.5,ISG,5/19/25,,6/13/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+PS: Create Customer Projects,868bzm6pz,WBT,0.5,ISG,5/19/25,,6/13/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+PS: Create FEA,868bzhq2e,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+PS: Create Internal Projects,868bzh1bb,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+PS: Create the Program Common ID for Internal Projects,868bzx3na,WBT,0.5,ISG,5/12/25,,6/6/25,,Not Started,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+PS: Create the Program Common ID for LRP/Proposals/Contracts,868bzq53m,ILT,1,ISG,5/12/25,3/21/25,6/6/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+PS: Initiate NBF Project ,868a2v97d,Video,0.1,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+Incurred Cost Claim: Completing Adjustments,868a2uwfq,ILT,1,ISG,6/30/25,11/25/24,7/25/25,,Final Development,On Track,,Cognitus; SAP S/4 HANA,PLP
+Incurred Cost Claim: Incurred Cost Claim Reports & Reconciliation,868a2uwc9,ILT,1,ISG,6/30/25,9/17/24,7/25/25,,Final Development,On Track,,Cognitus; SAP S/4 HANA,PLP
+"PS: Manage PCID for LRP, Proposal or Contract",868bzt8py,ILT,1,ISG,5/12/25,6/2/25,6/6/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+"PS: Transfer pWBS to aWBS, Create/Rel Final Work Pkg/Acct Assign, Issue Finl WAD",868bzm2mj,Video,0.1,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PLP
+Incurred Cost Claim: Reconcile G/L Data,868a2uwf7,ILT,1,ISG,6/30/25,9/25/24,7/25/25,,Final Development,On Track,,Cognitus; SAP S/4 HANA,PLP
+A/P & Supply Chain: Delegation of Authority ,868c1zq6a,ILT,1,ISG,5/26/25,,6/20/25,,Design,Behind Schedule,Curriculum redesign,SAP Concur; SAP S/4 HANA,PTP
+A/P & Supply Chain: Expense Report Analytics (Concur Reports),868a2v63n,ILT,1,ISG,5/19/25,,6/13/25,,Design,Behind Schedule,Curriculum redesign,SAP Concur; SAP S/4 HANA,PTP
+A/P & Supply Chain: Expense Report Approval ,868a2v6ky,ILT,1,ISG,5/26/25,,6/20/25,,Design,Behind Schedule,Curriculum redesign,SAP Concur; SAP S/4 HANA,PTP
+A/P & Supply Chain: Expense Report Posting & Errors,868a2v630,ILT,1,ISG,5/19/25,,6/13/25,,Design,Behind Schedule,Curriculum redesign,SAP Concur; SAP S/4 HANA,PTP
+A/P & Supply Chain: Initiate Procurement Request,868c1zgrd,WBT,0.5,ISG,5/26/25,,6/20/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+A/P & Supply Chain: P-Card Statement Invoice Reconciliation ,868a2v68z,ILT,1,ISG,5/26/25,,6/20/25,,Design,Behind Schedule,Curriculum redesign,SAP Concur for PCard; SAP S/4 HANA,PTP
+A/P & Supply Chain: Reconcile P-Card Purchase - Add Transactional Details ,868a2v6gq,ILT,1,ISG,5/26/25,,6/20/25,,Design,Behind Schedule,Curriculum redesign,SAP Concur for PCard; SAP S/4 HANA,PTP
+A/P & Supply Chain: Reconcile PO Catalog & Punch Out,868c1zugu,WBT,0.5,ISG,4/28/25,4/1/25,5/23/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+A/P & Supply Chain: Reconcile US Bank Statement Detail ,868a3c3jd,WBT,0.5,ISG,5/26/25,,6/20/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+A/P & Supply Chain: Storing P-Card Packages ,868a2vbm7,ILT,1,ISG,5/26/25,,6/20/25,,Design,Behind Schedule,Curriculum redesign,OpenText Content Server (xECM); SAP Concur; SAP S/4 HANA,PTP
+Supplier Quality: Corporate Overrides,868c1wej1,WBT,0.5,ISG,5/5/25,5/13/25,5/30/25,,Final Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTP
+Accounts Payable: Add/Remove Supplier Remedy Condition,868c1x1dj,WBT,0.5,ISG,5/19/25,6/3/25,6/13/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Accounts Payable: AP Analytics,868b6enaq,ILT,1,ISG,6/23/25,,7/18/25,,Not Started,On Track,,OpenText Content Server (xECM); SAP S/4 HANA,PTP
+Accounts Payable: Approve/Reject Expedited Payment Requests,868a372rj,WBT,0.5,ISG,6/16/25,,7/11/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Bank Integrations,868c1ydpp,WBT,0.5,ISG,6/16/25,,7/11/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Create Invoice using Spreadsheet Upload,868a36nb0,WBT,0.5,ISG,5/19/25,6/2/25,6/13/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+Accounts Payable: Currency Mismatch Error (Update PO),868a2vbmh,WBT,0.5,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Curriculum redesign,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+Accounts Payable: Errors within the Financing Process,868c1z18m,WBT,0.5,ISG,5/5/25,6/1/25,5/30/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Accounts Payable: GR/IR Reconciliation,868c1x2u7,WBT,0.5,ISG,5/19/25,,6/13/25,,Alpha Review,Behind Schedule,Curriculum redesign,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+"Accounts Payable: Perform Reconciliations, Pt. 1",868c1y98y,WBT,0.5,ISG,6/16/25,,7/11/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Perform Reconciliations, Pt. 2",868c1ybpr,WBT,0.5,ISG,6/16/25,,7/11/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Process Aged ERS Receipts,868c1x5gm,WBT,0.5,ISG,5/19/25,6/2/25,6/13/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Accounts Payable: Process Certified Checks,868c1y56t,WBT,0.5,ISG,6/16/25,,7/11/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Process Cost-Reimbursable Exceptions for Accounts Payable,868c1z0xy,WBT,0.5,ISG,5/5/25,5/15/25,5/30/25,,Alpha Review,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Accounts Payable: Process Cost-Reimbursable Exceptions for Buyers,868c1z0a0,WBT,0.5,ISG,5/5/25,5/23/25,5/30/25,,Alpha Review,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Accounts Payable: Process Direct Debit Payments,868a3811p,Video,0.1,ISG,6/16/25,,7/11/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Process Down Payments on Financed POs, Pt. 1",868c1yq6p,WBT,0.5,ISG,5/5/25,5/12/25,5/30/25,,Alpha Review,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+"Accounts Payable: Process Down Payments on Financed POs, Pt. 2",868c1yrjp,WBT,0.5,ISG,5/5/25,5/13/25,5/30/25,,Alpha Review,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Accounts Payable: Process Escheatment Payments,868a37bwj,WBT,0.5,ISG,6/16/25,,7/11/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Process Exceptions,868a37aw4,WBT,0.5,ISG,6/23/25,,7/18/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Process Hedge Payments, Pt. 1",868a372yd,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Process Hedge Payments, Pt. 2",868a37378,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Process Invoices & Credit, Pt. 1",868a2v9nq,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+"Accounts Payable: Process Invoices & Credit, Pt. 2",868c1wncb,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Curriculum redesign,OpenText Content Server (xECM); SAP S/4 HANA,PTP
+Accounts Payable: Process Payments,868a2v7v1,WBT,0.5,ISG,6/23/25,,7/18/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Process Supplier Refunds (Create & Clear Supplier Refunds),868a37d3x,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Process Supplier Refunds (Create Credit Memo with SALT),868a37dfy,WBT,0.5,ISG,6/23/25,,7/18/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Processing Down Payments on Financed POs for Buyers,868c1yy91,WBT,0.5,ISG,5/5/25,6/1/25,5/30/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Accounts Payable: Review & Block Automatic Payments,868a3748x,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Review Supplier Refunds (Clear Tax Correction & Credit Memo),868a37f89,Video,0.1,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Review Supplier Refunds, Pt. 1",868c1xxud,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Review Supplier Refunds, Pt. 2",868c1y08n,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Run A/P Audit, Pt. 1",868c1wy6n,WBT,0.5,ISG,5/19/25,5/28/25,6/13/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+"Accounts Payable: Run A/P Audit, Pt. 2",868c1wydk,WBT,0.5,ISG,5/19/25,5/31/25,6/13/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+Accounts Payable: Run Ad hoc Payments,868c1xftu,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Setup of Supplier Financed Pos,868c1ykkw,WBT,0.5,ISG,5/5/25,4/7/25,5/30/25,,Beta Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Accounts Payable: Small Business Acceleration,868c1x051,WBT,0.5,ISG,5/19/25,6/2/25,6/13/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+Accounts Payable: Submit Debit/Credit Request to A/P,868a2va5u,WBT,0.5,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Curriculum redesign,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+"Accounts Payable: Submit/Approve Expedited Payment Requests, Pt. 1",868a3719f,Video,0.1,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Submit/Approve Expedited Payment Requests, Pt. 2",868a37228,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Accounts Payable: Submit/Approve Expedited Payment Requests, Pt. 3",868c1xvfw,WBT,0.5,ISG,7/7/25,,8/1/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Accounts Payable: Verify Credit Memo,868a2v5gf,WBT,0.5,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Curriculum redesign,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+Accounts Payable: Verify Vendor,868c1wx09,WBT,0.5,ISG,6/30/25,,7/25/25,,Not Started,On Track,,SAP S/4 HANA;OpenText Vendor Invoice Management,PTP
+MCE: BOM Transactions,868a2vbw2,WBT,0.5,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+MCE: Contracts & Outline Agreements,868a2v78c,WBT,0.5,ISG,6/2/25,6/3/25,6/27/25,,Alpha Development,On Track,,SAP S/4 HANA,PTP
+MCE: Manage Purchase Info Records,868a2vc2g,WBT,0.5,ISG,6/2/25,,6/27/25,,Not Started,Behind Schedule,Development not started,SAP S/4 HANA,PTP
+MCE: MCE Inventory & Parts Reporting,868a2v7x8,WBT,0.5,ISG,6/2/25,,6/27/25,,Not Started,Behind Schedule,Development not started,SAP S/4 HANA,PTP
+MCE: MCE Pricing & Costing Reporting,868a2v62b,WBT,0.5,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+MCE: Purchasing Documents,868a2va99,WBT,0.5,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supplier Quality: Approval Code Creation/Maintenance & Text Key Mapping,868a2v6re,WBT,0.5,ISG,6/2/25,,6/27/25,,Not Started,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Supplier Quality: ASN Controls & Quality Notification (QNote),868ccajuu,WBT,0.5,ISG,5/5/25,5/9/25,5/30/25,,Alpha Review,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Supplier Quality: Create & Maintain ZQUAL,868a2v6qh,WBT,0.5,ISG,5/5/25,3/27/25,5/30/25,,Beta Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTP
+Supplier Quality: Current Approvals Report,868cca7d1,WBT,0.5,ISG,5/19/25,,6/13/25,,Alpha Review,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Supplier Quality: Inspection Relevance Determination Program,868ccafpp,QRG,0.1,ISG,6/2/25,,6/27/25,,Not Started,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Supplier Quality: Maintain WF User Assignment,868cca3rv,WBT,0.5,ISG,5/5/25,5/6/25,5/30/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTP
+Supplier Quality: Override Selection Report (Run the ZOVERRIDE Report),868c1wfzz,QRG,0.1,ISG,5/19/25,6/2/25,6/13/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Supplier Quality: Plant Overrides,868c1wdmh,WBT,0.5,ISG,5/5/25,5/6/25,5/30/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTP
+Supplier Quality: Program Group Codes,868c1rzhq,WBT,0.5,ISG,5/5/25,5/5/25,5/30/25,,Alpha Development,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Supplier Quality: Purchase Order Report,868ccaacz,QRG,0.1,ISG,5/19/25,5/19/25,6/13/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTP
+Supplier Quality: Purchase Requisition Change Module,868cca0rn,WBT,0.5,ISG,4/28/25,3/27/25,5/23/25,,Beta Development,Behind Schedule,Script Redesign,SAP S/4 HANA,PTP
+Supplier Quality: Quality Clause Groups,868c1rhqk,WBT,0.5,ISG,5/5/25,5/5/25,5/30/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTP
+Supplier Quality: Quality Record Queue Report (Run the ZMMQR Report),868cca9yb,QRG,0.1,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Supplier Quality: Text Keys,868e0z8p7,WBT,0.5,ISG,5/5/25,5/4/25,5/30/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTP
+Supplier Quality: Vendor Approvals,868a2v8qx,WBT,0.5,ISG,6/2/25,,6/27/25,,Not Started,Behind Schedule,Development not started,SAP S/4 HANA,PTP
+Supplier Quality: Workflow Settings (ZPLANT),868cca5mt,WBT,0.5,ISG,5/19/25,5/8/25,6/13/25,,Beta Review,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Buyer/Customer Furnished Property,868dq07hc,WBT,0.5,ISG,5/19/25,6/10/25,6/13/25,,Alpha Review,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTP
+Supply Chain: Create Fieldglass Worker User Profile,868c1960a,WBT,0.5,ISG,6/30/25,,7/25/25,,Not Started,On Track,,Fieldglass,PTP
+Supply Chain: Create Purchase Order,868a2v81g,ILT,1,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Creating & Maintaining Text Keys & Clauses,868dq4jmp,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Creating an Acquisition Compliance Folder (ACF),868dq87bb,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Fieldglass Time and Expense Entry/Costing/Payment,868c198db,QRG,0.1,ISG,6/30/25,,7/25/25,,Not Started,On Track,,Fieldglass,PTP
+Supply Chain: IT Procurement,868a2v6t3,WBT,0.5,ISG,6/16/25,,7/11/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Lean Request Approval,868dpxftj,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Long Term Agreements (Outline Agreements),868dq5038,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+"Supply Chain: Non-Consumable Property (Drop Shipping, BFM, GFE, CFE)",868a2vbj9,WBT,0.5,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Non-MRP Request and Approval,868c04kmx,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: PO Acknowledgement/Rejection ,868a2v7c7,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: PO Approval Delegation of Authority (Workflow Approvals),868dq85zj,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: PO Edit Checks,868a2v6bk,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: PO Expediting (Expedite Fee Process),868a2v8me,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Purchase Order Close Out,868a2v9g6,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Purchase Order Monitoring,868a2v67p,ILT,1,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Purchase Requisition Handover,868a2v87r,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Returning Hardware to Suppliers,868dq51yw,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Schedule Management,868dpzyte,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Service Procurement (Inc. Contingent Labor),868c0w8mu,WBT,0.5,ISG,6/30/25,,7/25/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Source Inspections & Monitoring,868c0vw6a,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Sourcing Events (RFX Processing & Award),868a2v7cy,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Supplier Capacity,868a2v7ac,ILT,1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Supply Chain: Supplier Qualification & Onboarding,868c190nq,ILT,1,ISG,6/30/25,,7/25/25,,Not Started,On Track,,SAP S/4 HANA,PTP
+Prod Ops: Managing Exception Message,868ckw8e1,WBT,0.5,ISG,4/28/25,3/17/25,3/28/25,,Final Approval,Behind Schedule,Curriculum redesign,SAP S/4 HANA,PTS
+Prod Ops: Outbound Delivery Creation & Processing,868auyu08,ILT,1,ISG,4/28/25,11/13/24,3/28/25,,Final Approval,Behind Schedule,SME Time Needed,OpenText Content Server (xECM); SAP S/4 HANA,PTS
+DYNSCH: Intro to Dynamic Scheduling,868bd3171,WBT,0.5,ISG,4/28/25,4/7/25,5/23/25,,Alpha Development,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA;Advanced Planning and Scheduling (APS),PTS
+Prod Ops: Perform Customer Selloff,868ca0z4d,WBT,0.5,ISG,4/28/25,4/7/25,5/23/25,,Alpha Review,Behind Schedule,Backlog from other delayed courses,OpenText Content Server (xECM); SAP S/4 HANA,PTS
+Prod Ops: Advanced Demand Load for Repairs/Spares,868c22e2z,WBT,0.5,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Script Not Available,SAP S/4 HANA,PTS
+Prod Ops: Create Cycle Counts,868c21xct,WBT,0.5,ISG,5/5/25,5/12/25,5/30/25,,Alpha Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTS
+Prod Ops: Import Validations,868c21jwr,ILT,1,ISG,5/5/25,5/9/25,5/30/25,,Design,Behind Schedule,Paused due to Curriculum redesign,SAP S/4 HANA,PTS
+Prod Ops: Planning Execution,868a4yd19,WBT,0.5,ISG,5/5/25,5/12/25,5/30/25,,Alpha Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTS
+Prod Ops: Production Kitting,868a2v6y8,Video,0.1,ISG,5/5/25,,5/30/25,,Design,Behind Schedule,Script Not Available,SAP S/4 HANA,PTS
+Prod Ops: Supplier Shipment Management,868c21ynv,WBT,0.5,ISG,5/5/25,5/12/25,5/30/25,,Alpha Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,PTS
+Prod Ops: Demand Authorization,868c22jvb,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,PTS
+Prod Ops: Perform Production Planning & Master Scheduling,868c22er9,WBT,0.5,ISG,5/19/25,,6/13/25,,Design,Behind Schedule,Paused due to Curriculum redesign,SAP S/4 HANA,PTS
+Prod Ops: Planning Strategy,868c22m3x,QRG,0.1,ISG,5/19/25,6/2/25,6/13/25,,Alpha Development,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,PTS
+Prod Ops: Production Picking,868a2v69w,Video,0.1,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Backlog from other delayed courses,SAP S/4 HANA,PTS
+Prod Ops: Review & Finalize Master Schedule,868a2v9ne,QRG,0.1,ISG,5/19/25,11/4/24,6/13/25,,Design,Behind Schedule,Paused due to Curriculum redesign,SAP S/4 HANA,PTS
+Prod Ops: Compliance Checks,868b4668z,ILT,1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Deliver Incoming & Resolve Grief,868b466gk,ILT,1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Kits & Fabrication Orders,868b4675x,WBT,0.5,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Manage Internal Transportation,868b45fyx,Video,0.1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Perform Cycle Count,868b45hfr,ILT,1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Pick Material,868b472hj,ILT,1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Prepare for Kitting,868b472qk,ILT,1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Production Kitting: Reconcile Inventory ,868b47336,ILT,1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Production Staging,868b473jm,ILT,1,ISG,6/9/25,,7/4/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+"Prod Ops: Purchase Order, New Order or Repair Order Service Order",868b45crm,Video,0.1,ISG,6/9/25,,7/4/25,,Design,Behind Schedule,Paused due to Curriculum redesign,SAP S/4 HANA,PTS
+Prod Ops: Create & Release Purchase Requisition,868c20v4g,QRG,0.1,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Order Creation & Release,868cjxf2u,WBT,0.5,ISG,7/14/25,,8/8/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+DYNSCH: Plant Admin,868ck6vxz,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA;Advanced Planning and Scheduling (APS),PTS
+DYNSCH: Production Scheduling Mgmt,868adh3z8,ILT,1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA;Advanced Planning and Scheduling (APS),PTS
+DYNSCH: Publish Production Schedule,868adnbcd,ILT,1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA;Advanced Planning and Scheduling (APS),PTS
+DYNSCH: Review Training & Operations,868adn6k2,ILT,1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA;Advanced Planning and Scheduling (APS),PTS
+DYNSCH: Validate Working Time,868adh4yw,ILT,1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA;Advanced Planning and Scheduling (APS),PTS
+Prod Ops: Apply Mapping Data: Mapping Data applied to S/4 fields/defaults,868b3zzx6,QRG,0.1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Create Material Master Record and Views,868b3zqc6,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Create Material Master Views Based on Material Type,868b3zyfd,QRG,0.1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Create Network,868b48mpk,WBT,0.5,ISG,7/21/25,5/12/25,8/15/25,,Alpha Review,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Execute Material Master (Extend material master to org structures),868b40u6z,QRG,0.1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Generate Workflows,868c20ft9,QRG,0.1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Prod Ops: Network Demand Load,868c22f8d,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+"Prod Ops: Sales Orders Demand, pt I",868b47449,ILT,1,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+DYNSCH: Dynamic Parameter Reporting & Analytics,868adh336,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA;Advanced Planning and Scheduling (APS),PTS
+Prod Ops: Fulfillment Management,868cqq9yc,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,PTS
+Cost Accounting: Review & Correct Financial Postings,868bz04pc,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,R2R
+Financial Accounting: Cash Document Matching,868byyvc5,WBT,0.5,ISG,7/21/25,,8/15/25,,Not Started,On Track,,SAP S/4 HANA,R2R
+Financial Accounting: Maintain Chart of Accounts,868byzf1v,WBT,0.5,ISG,5/5/25,5/15/25,5/30/25,,Design,Behind Schedule,Paused due to Curriculum redesign,SAP S/4 HANA,R2R
+Financial Accounting: Order and Backlog Adjustments,868e1aw82,WBT,0.5,ISG,5/19/25,5/23/25,6/13/25,,Alpha Development,On Track,,SAP S/4 HANA,R2R
+Financial Accounting: Revenue Recognition,868byybuu,WBT,0.5,ISG,5/5/25,5/15/25,5/30/25,,Alpha Development,Behind Schedule,Script Redesign,SAP S/4 HANA,R2R
+Financial Accounting: Review General Ledger Balances,868byzkmp,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Development not started,SAP S/4 HANA,R2R
+Financial Accounting: Run Preliminary Reports,868byygr4,WBT,0.5,ISG,4/28/25,3/3/25,3/28/25,,Design,Behind Schedule,Paused due to Curriculum redesign,SAP S/4 HANA,R2R
+Financial Accounting: Settle Costs/ Revenues,868byye4b,WBT,0.5,ISG,5/5/25,5/15/25,5/30/25,,Alpha Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,R2R
+Financial Accounting: AR/AP Grouping,868byz09n,WBT,0.5,ISG,4/28/25,4/4/25,5/23/25,4/30/25,Complete,On Track,Development Complete,SAP S/4 HANA,R2R
+Financial Accounting: Create and Manage Online Journal Entries,868byykmv,WBT,0.5,ISG,4/28/25,2/26/25,3/28/25,5/21/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Financial Accounting: Create Recurring Document,868e1p7kj,WBT,0.5,ISG,1/16/25,1/31/25,3/28/25,5/21/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Financial Accounting: G/L Account Clearing,868byyyz1,WBT,0.5,ISG,4/21/25,4/4/25,3/28/25,5/7/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Financial Accounting: Perform Currency Valuation,868byzd6q,WBT,0.5,ISG,4/14/25,2/17/25,3/28/25,4/30/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Financial Accounting: Process Open Items and Manage Periods,868byywxb,WBT,0.5,ISG,4/28/25,2/5/25,3/28/25,5/12/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Financial Accounting: Review Financial Postings,868byzhda,WBT,0.5,ISG,4/21/25,3/4/25,3/28/25,5/6/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Financial Accounting: Year-End Close: Balance Carry Forward,868byz2cz,WBT,0.5,ISG,4/14/25,3/4/25,3/28/25,4/30/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Product Costing: Maintain PMMO Master Data,868bz079f,WBT,0.5,ISG,4/28/25,4/4/25,5/23/25,5/21/25,Complete,On Track,Development Complete,SAP S/4 HANA,R2R
+Tax Accounting: Generate Ad Hoc Tax Fixed Asset Reports,868bytq3p,WBT,0.5,ISG,4/14/25,3/4/25,3/28/25,4/25/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Tax Accounting: Indirect Taxes: Manage Property Taxes,868bzx1ac,WBT,0.5,ISG,4/14/25,2/25/25,3/28/25,4/30/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Tax Accounting: Indirect Taxes: Manage Tax Fixed Assets Reporting,868bzx9bf,WBT,0.5,ISG,4/14/25,2/26/25,3/28/25,5/1/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Tax Accounting: Review Withholding Tax Information on BP Records,868bzwb0b,WBT,0.5,ISG,10/1/24,1/23/25,3/28/25,4/24/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Tax Accounting: Withholding Tax for Accounts Receivable,868bz4uju,WBT,0.5,ISG,10/1/24,1/15/25,3/28/25,4/24/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Tax Accounting: Withholding Tax on Procurement Invoices,868bywewc,WBT,0.5,ISG,10/1/24,1/23/25,3/28/25,4/24/25,Complete,Behind Schedule,Development Complete,SAP S/4 HANA,R2R
+Product Costing: Distribute & Analyze Cost/Execute & Analyze Pegging,868bz0e5k,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Development not started,SAP S/4 HANA,R2R
+Product Costing: Introduction to PMMO,868bz063a,WBT,0.5,ISG,4/28/25,4/8/25,5/23/25,,Beta Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,R2R
+Product Costing: Manage Exceptions,868bz0g2b,WBT,0.5,ISG,5/5/25,5/7/25,5/30/25,,Beta Review,Behind Schedule,SME Time Needed,SAP S/4 HANA,R2R
+Product Costing: Reporting,868bz0j3r,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Script Not Available,SAP S/4 HANA,R2R
+Tax Accounting: Defend Indirect Tax Audit,868byrubk,WBT,0.5,ISG,5/19/25,4/14/25,6/13/25,,Alpha Review,On Track,,SAP S/4 HANA,R2R
+Tax Accounting: Indirect Tax Corrections (PO and SD Invoices),868byrx87,WBT,0.5,ISG,4/28/25,4/16/25,5/23/25,,Alpha Development,Behind Schedule,SME Time Needed,SAP S/4 HANA,R2R
+Financial Accounting: General Ledger Account Reports,868e1aqzq,WBT,0.5,ISG,5/19/25,4/29/25,3/28/25,,Final Approval,Behind Schedule,SME Time Needed,SAP S/4 HANA,R2R
+Tax Accounting: Manage Business Licenses,868byrptd,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,R2R
+Tax Accounting: Manage Global Tax Provision,868byu5ey,WBT,0.5,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Development not started,SAP S/4 HANA,R2R
+Tax Accounting: Non-US VAT/GST/Other Indirect Tax Return Compliance & Reporting,868byue7e,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,R2R
+Tax Accounting: SAP/Vertex-Americas: US Sales/Use Tax Compliance/Report,868bzy4cu,WBT,0.5,ISG,5/19/25,5/5/25,6/13/25,,Alpha Development,On Track,System Access Needed,Vertex,R2R
+Tax Accounting: US Federal Tax Provision: Year-End Tasks,868byukqg,WBT,0.5,ISG,6/2/25,,7/4/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,R2R
+Tax Accounting: US Federal Tax Return,868byurfn,WBT,0.5,ISG,6/2/25,,7/4/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,R2R
+Tax Accounting: US State Tax Provision: Year-End Tasks,868byuwnn,WBT,0.5,ISG,6/2/25,,7/4/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,R2R
+Tax Accounting: US State Tax Return,868bzxqfm,WBT,0.5,ISG,6/2/25,,7/4/25,,Design,Behind Schedule,Curriculum redesign,SAP S/4 HANA,R2R
+Tax Accounting: Vertex-Americas: Indirect Tax Determination Engine,868bzy7pa,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,System Access Needed,Vertex,R2R
+Tax Accounting: Vertex-RoW: Canadian GST Compliance and Reporting,868bzy0q4,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,System Access Needed,Vertex,R2R
+Tax Accounting: Vertex-RoW: Indirect Tax Determination Engine,868d4cvm3,ILT,1,ISG,7/28/25,,8/22/25,,Not Started,On Track,System Access Needed,Vertex,R2R
+Tax Accounting: Vertex-RoW: Non-US VAT/GST/Other Indirect Tax Return Compl/Rptg,868bzxuhp,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,System Access Needed,Vertex,R2R
+IPASS Trace: Search for Part or End Item Maintenance History,868a2v66p,WBT,0.5,ISG,5/5/25,5/7/25,5/30/25,,Final Development,Behind Schedule,SME Time Needed,IPASS Trace,SUS
+Obsolescence Management Introduction to CDATS,868dud951,WBT,0.5,ISG,5/5/25,5/5/25,5/30/25,,Final Development,Behind Schedule,SME Time Needed,Consolidated DMSMS Analysis Tool Suite (CDATS),SUS
+Obsolescence Management Using CDATS Part 1,868a2uzkq,ILT,1,ISG,5/5/25,5/1/25,5/30/25,,Alpha Review,Behind Schedule,SME Time Needed,Consolidated DMSMS Analysis Tool Suite (CDATS),SUS
+Obsolescence Management Using CDATS Part 2,868a2v25w,ILT,1,ISG,5/5/25,5/1/25,5/30/25,,Alpha Review,Behind Schedule,SME Time Needed,Consolidated DMSMS Analysis Tool Suite (CDATS),SUS
+Obsolescence Management Using CDATS Part 3,868a2uy93,ILT,1,ISG,5/5/25,5/1/25,5/30/25,,Alpha Review,Behind Schedule,SME Time Needed,Consolidated DMSMS Analysis Tool Suite (CDATS),SUS
+IPASS Analytics Composer: Create Custom Sus Analytics Reports,868a2v7kn,ILT,1,ISG,5/19/25,,6/13/25,,Not Started,Behind Schedule,Development not started,IPASS Analytics Composer,SUS
+Obsolescence Management Spares Impacts,868a2uze7,WBT,0.5,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Development not started,Consolidated DMSMS Analysis Tool Suite (CDATS),SUS
+Obsolescence Management Tech Refresh Plans/Roadmapping,868a2uztk,WBT,0.5,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Development not started,Consolidated DMSMS Analysis Tool Suite (CDATS),SUS
+SCDS Introduction,868a2uyzh,WBT,0.5,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Development not started,Sustainment Capability Delivery System (SCDS),SUS
+SCDS Theory & Tool Use,868a2uwuy,ILT,1,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Development not started,Sustainment Capability Delivery System (SCDS),SUS
+SCDS: Tool Use: How to Ingest/Import Requirements from DOORS,868acmgwv,Video,0.1,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Development not started,Sustainment Capability Delivery System (SCDS),SUS
+SCDS: Tool Use: Legacy Maturity Model,868acmhzz,Video,0.1,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Development not started,Sustainment Capability Delivery System (SCDS),SUS
+SCDS: Tool Use: SCDS DCAM (or AIM) Model,868acmhk9,Video,0.1,ISG,5/26/25,,6/20/25,,Not Started,Behind Schedule,Development not started,Sustainment Capability Delivery System (SCDS),SUS
+Perform Maintenance: Service Orders,868de38ea,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,SUS
+Perform Maintenance: Service Orders - EDE to AMS Interface,868de3f75,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,SUS
+Perform Maintenance: Service Orders - EDE to OASAS Interface,868de3hzk,WBT,0.5,ISG,7/28/25,,8/22/25,,Not Started,On Track,,SAP S/4 HANA,SUS
+,,,,,,,,,,,,,#N/A
+,,,,,,,,,,,,,#N/A
+,,,,,,,,,,,,,#N/A

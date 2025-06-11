@@ -1,0 +1,75 @@
+﻿Value Stream,Course,Task URL
+O2C,Billing: Costing Sheets and Burdening,https://isg.clickup.com/t/14266422/868dy5a5y
+O2C,Billing: Perform Time & Material Billing,https://isg.clickup.com/t/14266422/868c01t4m
+O2C,Billing: Previously Billed Process,https://isg.clickup.com/t/14266422/868dy5ekr
+O2C,Billing: Generate and Attach Invoices,https://isg.clickup.com/t/14266422/868c01f57
+O2C,Sales Orders: Update Sales Order,https://isg.clickup.com/t/14266422/868dh6g2m
+O2C,AR: Dispute Management,https://isg.clickup.com/t/14266422/868c011pt
+O2C,Billing: Confirm Billing Eligibility,https://isg.clickup.com/t/14266422/868c01j8v
+O2C,Billing: Perform Billing with Financing,https://isg.clickup.com/t/14266422/868c01kzg
+O2C,Billing: Perform BPMI Billing,https://isg.clickup.com/t/14266422/868c01nga
+O2C,Billing: Transmit Invoices and Back-Up,https://isg.clickup.com/t/14266422/868c01fzy
+R2R,Tax Accounting: US Federal Tax Return,https://isg.clickup.com/t/14266422/868byurfn
+R2R,Tax Accounting: US State Tax Provision: Year-End Tasks,https://isg.clickup.com/t/14266422/868byuwnn
+R2R,Tax Accounting: US Federal Tax Provision: Year-End Tasks,https://isg.clickup.com/t/14266422/868byukqg
+R2R,Tax Accounting: Manage Global Tax Provision,https://isg.clickup.com/t/14266422/868byu5ey
+R2R,Tax Accounting: US State Tax Return,https://isg.clickup.com/t/14266422/868bzxqfm
+PLP,PS: Initiate NBF Project - OL,https://isg.clickup.com/t/14266422/868a2v97d
+PLP,PS: Transfer pWBS to aWBS  Create/Release Final Work Packages/Account Assignments  & Issue Final WAD- SB,https://isg.clickup.com/t/14266422/868bzm2mj
+A2R,CLRP Overhead: Project Approval Request Submission Non-Stat Emergent,https://isg.clickup.com/t/14266422/868ddhuc3
+PTS,Prod Ops: Purchase Order  New Order or Repair Order Service Order - SB,https://isg.clickup.com/t/14266422/868b45crm
+PTS,Prod Ops: Import Validations - OL,https://isg.clickup.com/t/14266422/868c21jwr
+R2R,Financial Accounting: Maintain Chart of Accounts,https://isg.clickup.com/t/14266422/868byzf1v
+A2R,CLRP Overhead: Project Approval Request Submission Stat Project With no Plan,https://isg.clickup.com/t/14266422/868ddmdu4
+A2R,CLRP Overhead: Project Approval Request Submission Stat with Plan,https://isg.clickup.com/t/14266422/868ddhurb
+A2R,CLRP Capital and Overhead: Overview and System Navigation,https://isg.clickup.com/t/14266422/868a2vbxu
+A2R,CLRP Capital: Forecast Depreciation Model (SAP Analytics Cloud) (Possibly Descope?),https://isg.clickup.com/t/14266422/868c0tt5m
+A2R,CLRP Capital: Capital Project Closeout,https://isg.clickup.com/t/14266422/868c0tu34
+A2R,CLRP Overhead: Overhead Project Closeout,https://isg.clickup.com/t/14266422/868c0tw8v
+A2R,CLRP Capital: Change Request Workflow,https://isg.clickup.com/t/14266422/868c0tybt
+A2R,CLRP Capital:  Change Requests,https://isg.clickup.com/t/14266422/868c0tzq4
+A2R,CLRP Capital: Prioritize Plan Items Inputs,https://isg.clickup.com/t/14266422/868c0u5nk
+A2R,CLRP Capital: Approval Workflow,https://isg.clickup.com/t/14266422/868c0uctc
+A2R,CLRP: EPPM Administrative Tasks Capital and Overhead TBD-Possibly Add to Overview and Nav,https://isg.clickup.com/t/14266422/868c0wh7b
+A2R,CLRP Capital: Set Targets,https://isg.clickup.com/t/14266422/868ddgthj
+A2R,CLRP Overhead: Prioritize Plan Items Inputs,https://isg.clickup.com/t/14266422/868ddh3a9
+A2R,CLRP Capital: Manage Plan Financials,https://isg.clickup.com/t/14266422/868ddhb41
+A2R,CLRP Capital: Project Approval Request Submission,https://isg.clickup.com/t/14266422/868ddhk2p
+A2R,CLRP Overhead: Manage Plan Financials,https://isg.clickup.com/t/14266422/868ddhpmb
+A2R,CLRP Overhead: Approval Workflow (Possible all content or roll into Cap content?),https://isg.clickup.com/t/14266422/868ddhxa4
+A2R,CLRP Capital: Post Approval Request Automations,https://isg.clickup.com/t/14266422/868ddj1td
+A2R,CLRP Capital: Managing Project Performance,https://isg.clickup.com/t/14266422/868ddj3nt
+A2R,CLRP Overhead: Managing Project Performance,https://isg.clickup.com/t/14266422/868ddj4ay
+A2R,CLRP Capital: Reset Decision Points,https://isg.clickup.com/t/14266422/868ddjhtw
+A2R,CLRP Overhead: Create Plan Item and Enter Financial and Labor Plan,https://isg.clickup.com/t/14266422/868ddm192
+A2R,CLRP Capital: Upload Plan Items in Bulk (Possibly Descope?),https://isg.clickup.com/t/14266422/868ddm5wf
+A2R,CLRP Overhead: Upload Plan Items in Bulk (Possibly Descope?),https://isg.clickup.com/t/14266422/868ddm6f3
+A2R,CLRP Capital: Create Plan Item and Enter Financial and Labor Plan,https://isg.clickup.com/t/14266422/868c0qr9k
+PTP,A/P & Supply Chain: Expense Report Analytics (Concur Reports) - OL,https://isg.clickup.com/t/14266422/868a2v63n
+PTP,A/P & Supply Chain: Expense Report Posting & Errors - OL,https://isg.clickup.com/t/14266422/868a2v630
+PTP,A/P & Supply Chain: Initiate Procurement Request,https://isg.clickup.com/t/14266422/868c1zgrd
+PTP,A/P & Supply Chain: Reconcile US Bank Statement Detail - OL,https://isg.clickup.com/t/14266422/868a3c3jd
+PTP,A/P & Supply Chain: Reconcile PO Catalog & Punch Out - OL,https://isg.clickup.com/t/14266422/868c1zugu
+PTS,Prod Ops: Perform Production Planning & Master Scheduling-OL,https://isg.clickup.com/t/14266422/868c22er9
+PTP,A/P & Supply Chain: Storing P-Card Packages - OL,https://isg.clickup.com/t/14266422/868a2vbm7
+PTP,A/P & Supply Chain: P-Card Statement Invoice Reconciliation - OL,https://isg.clickup.com/t/14266422/868a2v68z
+PTP,A/P & Supply Chain: Delegation of Authority - OL,https://isg.clickup.com/t/14266422/868c1zq6a
+PTP,A/P & Supply Chain: Expense Report Approval - OL,https://isg.clickup.com/t/14266422/868a2v6ky
+PTP,A/P & Supply Chain: Reconcile P-Card Purchase - Add Transactional Details - OL,https://isg.clickup.com/t/14266422/868a2v6gq
+PTS,Prod Ops: Review & Finalize Master Schedule - QRG,https://isg.clickup.com/t/14266422/868a2v9ne
+PLP,PS: Create Account Assignment Charge Numbers for Customer Projects,https://isg.clickup.com/t/14266422/868bzngtq
+PLP,PS: Create Customer Projects,https://isg.clickup.com/t/14266422/868bzm6pz
+PLP,PS: Create Account Assignment Charge Numbers,https://isg.clickup.com/t/14266422/868bzj218
+PLP,PS: Create FEA,https://isg.clickup.com/t/14266422/868bzhq2e
+PLP,PS: Create Internal Projects,https://isg.clickup.com/t/14266422/868bzh1bb
+PTS,Prod Ops: Production Kitting - SB,https://isg.clickup.com/t/14266422/868a2v6y8
+PTS,Prod Ops: Advanced Demand Load for Repairs/Spares,https://isg.clickup.com/t/14266422/868c22e2z
+A2R,Lease Lifecycle Management: Create Catch Up Journal Entry - Manual,https://isg.clickup.com/t/14266422/868c02ej2
+A2R,Asset Accounting: New Lease Contract Valuation (Post Run),https://isg.clickup.com/t/14266422/868c0ft3w
+A2R,Asset Accounting: New Lease Contract Valuation (Test Run),https://isg.clickup.com/t/14266422/868c0fwep
+A2R,Asset Accounting: New Lease Contract Payment Schedule,https://isg.clickup.com/t/14266422/868c07676
+A2R,Asset Accounting: Software Licenses Ad Hoc Reporting,https://isg.clickup.com/t/14266422/868c052wj
+A2R,Asset Accounting: Run Payment Posting Job,https://isg.clickup.com/t/14266422/868c054zk
+A2R,Asset Accounting: Maintain Master Data in Lease Accounting Module,https://isg.clickup.com/t/14266422/868c0fyq2
+A2R,Asset Accounting: Change or Renew Contract,https://isg.clickup.com/t/14266422/868c03yda
+A2R,Asset Accounting: Software Licenses Maintain,https://isg.clickup.com/t/14266422/868c03znu

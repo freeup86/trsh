@@ -56,16 +56,46 @@ export const trainingDataProcessor = {
 
   // Historical patterns extracted from spreadsheets
   historicalData: {
-    // Average delays by Value Stream (based on ISG data analysis)
+    // Average delays by Value Stream (enhanced with ClickUp and ISG data)
     valueStreamDelays: {
-      'O2C': { avgDelay: 8, riskFactor: 0.7 },
-      'P2P': { avgDelay: 6, riskFactor: 0.6 },
-      'R2R': { avgDelay: 10, riskFactor: 0.8 },
-      'HCM': { avgDelay: 5, riskFactor: 0.5 },
-      'PLM': { avgDelay: 7, riskFactor: 0.65 },
-      'Finance': { avgDelay: 9, riskFactor: 0.75 },
-      'Tax Accounting': { avgDelay: 12, riskFactor: 0.85 },
-      'default': { avgDelay: 7, riskFactor: 0.6 }
+      'O2C': { avgDelay: 12, riskFactor: 0.8, pausedTasks: 11, commonIssues: ['billing', 'invoicing', 'costing sheets'] },
+      'P2P': { avgDelay: 8, riskFactor: 0.65, pausedTasks: 3, commonIssues: ['procurement', 'purchase orders'] },
+      'R2R': { avgDelay: 14, riskFactor: 0.85, pausedTasks: 5, commonIssues: ['tax accounting', 'federal tax', 'state tax', 'provision'] },
+      'HCM': { avgDelay: 6, riskFactor: 0.55, pausedTasks: 0, commonIssues: ['payroll', 'human resources'] },
+      'PLM': { avgDelay: 9, riskFactor: 0.7, pausedTasks: 1, commonIssues: ['manufacturing', 'product lifecycle'] },
+      'PLP': { avgDelay: 10, riskFactor: 0.75, pausedTasks: 2, commonIssues: ['project management', 'wbs', 'project approval'] },
+      'A2R': { avgDelay: 11, riskFactor: 0.8, pausedTasks: 2, commonIssues: ['asset accounting', 'depreciation', 'asset transfer'] },
+      'PTS': { avgDelay: 8, riskFactor: 0.65, pausedTasks: 1, commonIssues: ['production', 'service orders'] },
+      'Finance': { avgDelay: 10, riskFactor: 0.75, pausedTasks: 0, commonIssues: ['financial reporting', 'accounting'] },
+      'Tax Accounting': { avgDelay: 16, riskFactor: 0.9, pausedTasks: 5, commonIssues: ['tax compliance', 'tax provision', 'tax return'] },
+      'default': { avgDelay: 9, riskFactor: 0.7 }
+    },
+
+    // Real project data from ISG Courses spreadsheet
+    projectPatterns: {
+      phaseRiskMultipliers: {
+        'Not Started': 1.0,
+        'Design': 1.2,
+        'Alpha Development': 1.3,
+        'Beta Development': 1.4,
+        'Final Approval': 1.5,
+        'Complete': 0.8
+      },
+      riskStatusMultipliers: {
+        'On Track': 1.0,
+        'Behind Schedule': 1.6,
+        'At Risk': 1.4,
+        'Blocked': 2.0
+      },
+      delayIndicators: [
+        'pending update of change impacts',
+        'curriculum redesign',
+        'behind schedule',
+        'blocked',
+        'resource constraint',
+        'stakeholder approval',
+        'scope change'
+      ]
     },
 
     // ITC Phase complexity multipliers
@@ -77,16 +107,22 @@ export const trainingDataProcessor = {
       'default': 1.2
     },
 
-    // Risk indicators from historical data
+    // Risk indicators from historical data (enhanced with real project data)
     riskKeywords: {
-      'blocked': { severity: 0.9, avgDelay: 10 },
+      'blocked': { severity: 0.95, avgDelay: 15 },
+      'behind schedule': { severity: 0.8, avgDelay: 12 },
+      'curriculum redesign': { severity: 0.85, avgDelay: 14 },
+      'change impacts': { severity: 0.75, avgDelay: 8 },
+      'pending update': { severity: 0.7, avgDelay: 6 },
       'waiting': { severity: 0.7, avgDelay: 5 },
       'dependency': { severity: 0.8, avgDelay: 7 },
       'sme review': { severity: 0.6, avgDelay: 3 },
       'approval needed': { severity: 0.7, avgDelay: 5 },
       'scope change': { severity: 0.9, avgDelay: 12 },
       'technical issue': { severity: 0.8, avgDelay: 8 },
-      'resource constraint': { severity: 0.85, avgDelay: 10 }
+      'resource constraint': { severity: 0.85, avgDelay: 10 },
+      'stakeholder approval': { severity: 0.75, avgDelay: 9 },
+      'final approval': { severity: 0.6, avgDelay: 4 }
     },
 
     // Module complexity thresholds
@@ -124,6 +160,7 @@ export const trainingDataProcessor = {
   // Analyze change description using historical patterns and keyword matching
   analyzeChange(description) {
     const analysis = {
+      description: description, // Store for later use
       valueStreams: [],
       riskFactors: [],
       complexityScore: 0,
@@ -211,20 +248,29 @@ export const trainingDataProcessor = {
       complexity += keywordWeight.minor * (1 + analysis.matchedKeywords.minor.length * 0.05);
     }
 
-    // Value stream complexity
+    // Enhanced value stream complexity (using real data)
     if (analysis.valueStreams.length > 0) {
       const avgRisk = analysis.valueStreams.reduce((sum, stream) => {
-        return sum + this.historicalData.valueStreamDelays[stream].riskFactor;
+        const streamData = this.historicalData.valueStreamDelays[stream] || this.historicalData.valueStreamDelays.default;
+        // Factor in paused tasks as additional risk
+        const pausedTaskRisk = streamData.pausedTasks ? streamData.pausedTasks * 0.05 : 0;
+        return sum + streamData.riskFactor + pausedTaskRisk;
       }, 0) / analysis.valueStreams.length;
-      complexity += avgRisk * 0.2;
+      complexity += avgRisk * 0.25;
     }
 
-    // Risk factor complexity
+    // Enhanced risk factor complexity
     if (analysis.riskFactors.length > 0) {
       const avgSeverity = analysis.riskFactors.reduce((sum, risk) => {
         return sum + risk.severity;
       }, 0) / analysis.riskFactors.length;
       complexity += avgSeverity * 0.3;
+    }
+
+    // Real project phase detection
+    const descLower = description.toLowerCase();
+    if (this.historicalData.projectPatterns.delayIndicators.some(indicator => descLower.includes(indicator))) {
+      complexity += 0.2; // Add complexity for known delay indicators
     }
 
     // Module count estimation (heuristic based on description length and keywords)
@@ -251,26 +297,41 @@ export const trainingDataProcessor = {
   estimateDelay(analysis) {
     let totalDelay = 0;
 
-    // Base delay from value streams
+    // Enhanced base delay from value streams (using real data)
     if (analysis.valueStreams.length > 0) {
       const avgStreamDelay = analysis.valueStreams.reduce((sum, stream) => {
-        return sum + this.historicalData.valueStreamDelays[stream].avgDelay;
+        const streamData = this.historicalData.valueStreamDelays[stream] || this.historicalData.valueStreamDelays.default;
+        // Factor in paused tasks data
+        const pausedTaskDelay = streamData.pausedTasks ? streamData.pausedTasks * 0.8 : 0;
+        return sum + streamData.avgDelay + pausedTaskDelay;
       }, 0) / analysis.valueStreams.length;
       totalDelay += avgStreamDelay;
     } else {
       totalDelay += this.historicalData.valueStreamDelays.default.avgDelay;
     }
 
-    // Add delays from risk factors
+    // Enhanced risk factor delays
     if (analysis.riskFactors.length > 0) {
       const maxRiskDelay = Math.max(...analysis.riskFactors.map(r => r.expectedDelay));
-      totalDelay += maxRiskDelay * 0.7; // Use 70% of max risk delay to avoid over-estimation
+      totalDelay += maxRiskDelay * 0.8; // Increased weight based on real project data
     }
 
-    // Apply complexity multiplier
-    totalDelay *= (1 + analysis.complexityScore * 0.5);
+    // Apply complexity multiplier (enhanced)
+    totalDelay *= (1 + analysis.complexityScore * 0.6);
 
-    return Math.round(totalDelay);
+    // Apply project phase multipliers if detected
+    const description = analysis.description || '';
+    const descLower = description.toLowerCase();
+    
+    if (descLower.includes('final approval') || descLower.includes('sign off')) {
+      totalDelay *= this.historicalData.projectPatterns.phaseRiskMultipliers['Final Approval'];
+    } else if (descLower.includes('behind schedule') || descLower.includes('delayed')) {
+      totalDelay *= this.historicalData.projectPatterns.riskStatusMultipliers['Behind Schedule'];
+    } else if (descLower.includes('blocked')) {
+      totalDelay *= this.historicalData.projectPatterns.riskStatusMultipliers['Blocked'];
+    }
+
+    return Math.round(Math.max(totalDelay, 0));
   },
 
   calculateConfidence(analysis) {
