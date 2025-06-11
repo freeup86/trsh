@@ -162,8 +162,14 @@ temp/
 **/secrets.json
 **/config/secrets.*
 **/.env*
-!**/.env.example
-!.env.local.example
+.env.example
+env.example
+
+# Backend environment files
+backend/.env
+backend/.env.*
+backend/.env.example
+backend/env.example
 
 # Build artifacts
 *.tar.gz
