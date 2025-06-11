@@ -920,7 +920,7 @@ Please respond in the following JSON format:
                       className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-sm"
                       style={{ 
                         focusRingColor: colorPalette.darkBlue,
-                        minHeight: '80px',
+                        minHeight: '120px',
                         resize: 'vertical',
                         fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
                       }}
