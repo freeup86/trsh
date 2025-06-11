@@ -24,11 +24,11 @@ export const trainingDataProcessor = {
         'assessment', 'certification requirement', 'content rewrite', 'module',
         'course flow', 'sequence', 'compliance', 'legal requirement',
         'new stakeholder', 'complex interaction', 'simulation', 'learning objective',
-        'legal review', 'tone', 'instructional strategy', 'structural change',
+        'legal review', 'instructional strategy', 'structural change',
         'bottleneck', 'review cycle', 'reformat', 'rebuild', 'valid assessment',
         'reliable assessment', 'lms integration', 'custom video', 'animation',
         'instructional design', 'programming', 'branching scenario', 'drag-and-drop',
-        'media production', 'target audience', 'skill level', 'reorganization',
+        'media production', 'reorganization',
         'navigation logic', 'scripting', 'storyboarding', 'production', 'editing',
         'vague feedback', 'contradictory feedback'
       ],
@@ -38,7 +38,7 @@ export const trainingDataProcessor = {
       keywords: [
         'tooling overhaul', 'platform overhaul', 'pilot feedback', 'testing feedback',
         'sme unavailable', 'compliance change', 'legal change', 'policy change',
-        'delivery format', 'wbt to ilt', 'ilt to wbt', 'target audience',
+        'delivery format', 'wbt to ilt', 'ilt to wbt', 'target audience shift', 'shifting target audience',
         'stakeholder disruption', 'resource disruption', 'leadership change',
         'organizational change', 'tech stack', 'integration issue', 'course purpose',
         'course goal', 'key sme loss', 'sensitive topic', 'legal team', 'brand team',
@@ -48,7 +48,7 @@ export const trainingDataProcessor = {
         'business objective', 'learning outcome', 'instructor-led', 'entry-level',
         'senior manager', 'complete redesign', 'financial constraint', 'priority shift',
         'negative pilot', 'accessibility failure', 'usability failure',
-        'accessibility audit', 'usability testing', 'platform change'
+        'accessibility audit', 'usability testing', 'platform change', 'tone, content, and complexity'
       ],
       delayRange: { min: 11, max: 30 }
     }
@@ -143,11 +143,30 @@ export const trainingDataProcessor = {
     analysis.matchedKeywords.significant = this.checkKeywords(description, this.changeDefinitions.significant.keywords);
     analysis.matchedKeywords.major = this.checkKeywords(description, this.changeDefinitions.major.keywords);
 
-    // Identify affected value streams
-    Object.keys(this.historicalData.valueStreamDelays).forEach(stream => {
-      if (stream !== 'default' && descLower.includes(stream.toLowerCase())) {
-        analysis.valueStreams.push(stream);
+    // Identify affected value streams with improved pattern matching
+    const valueStreamPatterns = {
+      'Tax Accounting': ['tax accounting', 'taxation', 'tax compliance', 'tax reporting'], // Check tax accounting first to avoid conflicts
+      'O2C': ['o2c', 'order to cash', 'order-to-cash', 'sales', 'billing', 'revenue', 'customer'],
+      'P2P': ['p2p', 'procure to pay', 'procure-to-pay', 'procurement', 'purchasing', 'vendor', 'supplier'],
+      'R2R': ['r2r', 'record to report', 'record-to-report', 'reporting', 'financial reporting'],
+      'HCM': ['hcm', 'human capital', 'hr', 'human resources', 'payroll', 'employee'],
+      'PLM': ['plm', 'product lifecycle', 'product', 'manufacturing'],
+      'Finance': ['finance', 'financial', 'accounting', 'budget', 'cost']
+    };
+
+    Object.entries(valueStreamPatterns).forEach(([stream, patterns]) => {
+      if (patterns.some(pattern => descLower.includes(pattern))) {
+        if (!analysis.valueStreams.includes(stream)) {
+          analysis.valueStreams.push(stream);
+        }
       }
+    });
+
+    // Debug logging for value stream detection
+    console.log('Value stream analysis debug:', {
+      description: description.substring(0, 100) + '...',
+      detectedValueStreams: analysis.valueStreams,
+      descriptionLower: descLower.substring(0, 100) + '...'
     });
 
     // Identify risk factors

@@ -156,37 +156,66 @@ const ERPChangeControl = () => {
   const createOutlookEmail = () => {
     const subject = `Training Impact Alert: ${editableClassification} Required`;
     
+    // Get affected value streams with improved logic
+    let valueStreams = 'Multiple';
+    
+    if (prediction.analysisDetails && prediction.analysisDetails.valueStreams && prediction.analysisDetails.valueStreams.length > 0) {
+      valueStreams = prediction.analysisDetails.valueStreams.join(', ');
+    } else {
+      // Fallback: try to detect value streams directly from the change description
+      const descLower = changeDescription.toLowerCase();
+      const detectedStreams = [];
+      
+      const valueStreamPatterns = {
+        'Tax Accounting': ['tax accounting', 'taxation', 'tax compliance', 'tax reporting'],
+        'O2C': ['o2c', 'order to cash', 'order-to-cash', 'sales', 'billing', 'revenue'],
+        'P2P': ['p2p', 'procure to pay', 'procure-to-pay', 'procurement', 'purchasing'],
+        'R2R': ['r2r', 'record to report', 'record-to-report', 'reporting', 'financial reporting'],
+        'HCM': ['hcm', 'human capital', 'hr', 'human resources', 'payroll'],
+        'PLM': ['plm', 'product lifecycle', 'manufacturing'],
+        'Finance': ['finance', 'financial', 'accounting', 'budget', 'cost']
+      };
+      
+      Object.entries(valueStreamPatterns).forEach(([stream, patterns]) => {
+        if (patterns.some(pattern => descLower.includes(pattern))) {
+          if (!detectedStreams.includes(stream)) {
+            detectedStreams.push(stream);
+          }
+        }
+      });
+      
+      if (detectedStreams.length > 0) {
+        valueStreams = detectedStreams.join(', ');
+      }
+      
+      // Debug logging
+      console.log('Email creation debug:', {
+        originalValueStreams: prediction.analysisDetails?.valueStreams,
+        fallbackDetected: detectedStreams,
+        finalValueStreams: valueStreams,
+        changeDescription: changeDescription.substring(0, 100) + '...'
+      });
+    }
+    
     const emailBody = `
 Dear Team,
 
-A training impact prediction has been completed that requires attention:
+A ${editableClassification.toUpperCase()} has been identified for the ${valueStreams.toUpperCase()} value stream, "[SUBSTREAM]" courses below. Please review the description of the change, the impact assessment and the next steps plan.
 
-CHANGE DESCRIPTION:
+Change Description:
 ${changeDescription}
 
-IMPACT ASSESSMENT:
+Impact Assessment:
 • Classification: ${editableClassification}
 • Estimated Delay: ${editableDelay === 0 ? 'No delay' : `${editableDelay} business days`}
 
-JUSTIFICATION:
+Justification:
 ${editableJustification}
 
-${prediction.analysisDetails ? `
-ANALYSIS DETAILS:
-${prediction.analysisDetails.matchedKeywords && (
-  prediction.analysisDetails.matchedKeywords.minor.length > 0 || 
-  prediction.analysisDetails.matchedKeywords.significant.length > 0 || 
-  prediction.analysisDetails.matchedKeywords.major.length > 0
-) ? `• Matched Keywords: ${[
-  ...prediction.analysisDetails.matchedKeywords.minor.slice(0, 3),
-  ...prediction.analysisDetails.matchedKeywords.significant.slice(0, 3),
-  ...prediction.analysisDetails.matchedKeywords.major.slice(0, 3)
-].join(', ')}` : ''}
-${prediction.analysisDetails.valueStreams && prediction.analysisDetails.valueStreams.length > 0 ? `• Value Streams Affected: ${prediction.analysisDetails.valueStreams.join(', ')}` : ''}
-${prediction.analysisDetails.riskFactors && prediction.analysisDetails.riskFactors.length > 0 ? `• Risk Factors: ${prediction.analysisDetails.riskFactors.join(', ')}` : ''}
-` : ''}
+Next Steps:
 
-Please review this impact assessment and take appropriate action.
+
+Please review this impact assessment and take appropriate action. 
 
 Best regards,
 Training Impact Predictor System
