@@ -843,7 +843,10 @@ Please respond in the following JSON format:
               value={changeDescription}
               onChange={(e) => setChangeDescription(e.target.value)}
               className="w-full max-w-xl p-3 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2"
-              style={{ focusRingColor: colorPalette.darkBlue }}
+              style={{ 
+                focusRingColor: colorPalette.darkBlue,
+                fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
+              }}
               rows={6}
               placeholder="e.g., 'Update R2R tax accounting module for new SAP S/4 HANA process' or 'Major revision to O2C billing training due to scope change in ITC3 phase' or 'Fix typo in P2P procurement guide'"
             />
@@ -918,7 +921,8 @@ Please respond in the following JSON format:
                       style={{ 
                         focusRingColor: colorPalette.darkBlue,
                         minHeight: '80px',
-                        resize: 'vertical'
+                        resize: 'vertical',
+                        fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
                       }}
                       placeholder="Edit the justification if needed..."
                     />
