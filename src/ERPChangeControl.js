@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LineChart, Line, BarChart, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { ArrowRight, FileText, MessageSquare, RotateCw, Award, Search, Users, UserPlus, Clock, AlertCircle } from 'lucide-react';
+import { ArrowRight, FileText, MessageSquare, RotateCw, Award, Search, Users, UserPlus, Clock, AlertCircle, Save } from 'lucide-react';
 import Anthropic from '@anthropic-ai/sdk';
 import { trainingDataProcessor } from './trainingDataProcessor';
 
@@ -8,6 +8,10 @@ const ERPChangeControl = () => {
   const [changeDescription, setChangeDescription] = useState('');
   const [prediction, setPrediction] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [saveStatus, setSaveStatus] = useState(null); // 'saving', 'saved', 'error'
+  const [editableJustification, setEditableJustification] = useState('');
+  const [editableDelay, setEditableDelay] = useState(0);
+  const [editableClassification, setEditableClassification] = useState('');
 
   const colorPalette = {
     darkBlue: '#004e92',
@@ -20,7 +24,7 @@ const ERPChangeControl = () => {
 
   // Data for charts
   const scheduleImpactData = [
-    { name: 'Minor Change', days: 1, fill: colorPalette.lightBlue },
+    { name: 'Minor Change', days: 4, fill: colorPalette.lightBlue },
     { name: 'Significant Change', days: 8, fill: colorPalette.mediumBlue },
     { name: 'Major Change', days: 20, fill: colorPalette.darkBlue }
   ];
@@ -97,6 +101,99 @@ const ERPChangeControl = () => {
     { icon: '🔍', title: 'Regular Review', description: 'Continuously refine the process.' }
   ];
 
+  // Save current prediction to database
+  const savePrediction = async () => {
+    if (!prediction || !changeDescription.trim()) {
+      console.error('No prediction to save');
+      return;
+    }
+
+    try {
+      setSaveStatus('saving');
+      
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/predictions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          changeDescription: changeDescription,
+          classification: editableClassification || prediction.classification,
+          daysDelay: editableDelay !== null ? editableDelay : prediction.daysDelay,
+          justification: editableJustification || prediction.justification,
+          analysisDetails: prediction.analysisDetails,
+          sessionId: Date.now().toString(), // Simple session ID
+          userId: null // Can be set if user authentication is implemented
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setSaveStatus('saved');
+      
+      // Create Outlook email for Significant or Major changes
+      if (editableClassification === 'Significant Change' || editableClassification === 'Major Change') {
+        createOutlookEmail();
+      }
+      
+      // Clear save status after 3 seconds
+      setTimeout(() => setSaveStatus(null), 3000);
+      
+      return result;
+    } catch (error) {
+      console.error('Error saving prediction:', error);
+      setSaveStatus('error');
+      
+      // Clear save status after 5 seconds
+      setTimeout(() => setSaveStatus(null), 5000);
+      
+      throw error;
+    }
+  };
+
+  // Create Outlook email with prediction details
+  const createOutlookEmail = () => {
+    const subject = `Training Impact Alert: ${editableClassification} Required`;
+    
+    const emailBody = `
+Dear Team,
+
+A training impact prediction has been completed that requires attention:
+
+CHANGE DESCRIPTION:
+${changeDescription}
+
+IMPACT ASSESSMENT:
+• Classification: ${editableClassification}
+• Estimated Delay: ${editableDelay === 0 ? 'No delay' : `${editableDelay} business days`}
+
+JUSTIFICATION:
+${editableJustification}
+
+${prediction.analysisDetails ? `
+ANALYSIS DETAILS:
+${prediction.analysisDetails.valueStreams && prediction.analysisDetails.valueStreams.length > 0 ? `• Value Streams Affected: ${prediction.analysisDetails.valueStreams.join(', ')}` : ''}
+${prediction.analysisDetails.riskFactors && prediction.analysisDetails.riskFactors.length > 0 ? `• Risk Factors: ${prediction.analysisDetails.riskFactors.join(', ')}` : ''}
+• Complexity Score: ${prediction.analysisDetails.complexityScore}%
+• Confidence Level: ${prediction.analysisDetails.confidence}%
+` : ''}
+
+Please review this impact assessment and take appropriate action.
+
+Best regards,
+Training Impact Predictor System
+    `.trim();
+
+    // Create mailto URL
+    const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.open(mailtoUrl, '_self');
+  };
+
   const predictImpact = async () => {
     if (!changeDescription.trim()) {
       setPrediction({
@@ -108,6 +205,10 @@ const ERPChangeControl = () => {
     }
 
     setIsLoading(true);
+    setSaveStatus(null); // Reset save status for new prediction
+    setEditableJustification(''); // Reset editable justification
+    setEditableDelay(0); // Reset editable delay
+    setEditableClassification(''); // Reset editable classification
     
     try {
       // Check if API key is available
@@ -131,6 +232,9 @@ const ERPChangeControl = () => {
           };
           
           setPrediction(enhancedResult);
+          setEditableJustification(enhancedResult.justification);
+          setEditableDelay(enhancedResult.daysDelay);
+          setEditableClassification(enhancedResult.classification);
           setIsLoading(false);
         }, 1500);
         return;
@@ -194,6 +298,10 @@ Please respond in the following JSON format:
         }
       });
       
+      setEditableJustification(parsedResponse.justification);
+      setEditableDelay(parsedResponse.daysDelay);
+      setEditableClassification(parsedResponse.classification);
+      
     } catch (error) {
       console.error('Error calling Claude API:', error);
       setPrediction({
@@ -224,7 +332,7 @@ Please respond in the following JSON format:
           {[
             {
               title: 'Minor Change',
-              subtitle: 'Est. Delay 0-1 Days',
+              subtitle: 'Est. Delay 0-4 Days',
               description: 'Quick fixes like typos and simple clarifications. Handled rapidly to maintain content accuracy without disrupting workflow.',
               borderColor: colorPalette.lightBlue
             },
@@ -236,7 +344,7 @@ Please respond in the following JSON format:
             },
             {
               title: 'Major Change',
-              subtitle: 'Est. Delay 15+ Days',
+              subtitle: 'Est. Delay 11+ Days',
               description: 'Substantial revisions to core content or strategy, requiring high-level approval and a potential pause in development.',
               borderColor: colorPalette.darkBlue
             }
@@ -723,17 +831,68 @@ Please respond in the following JSON format:
                 <h4 className="font-semibold mb-2" style={{ color: colorPalette.darkBlue }}>
                   Enhanced Prediction Results:
                 </h4>
-                <div className="space-y-2">
-                  <p className="font-semibold">Classification: {prediction.classification}</p>
-                  <p className="font-semibold">Estimated Delay: {prediction.daysDelay === 0 ? 'No delay' : `${prediction.daysDelay} business days`}</p>
-                  <p className="mt-2"><strong>Justification:</strong> {prediction.justification}</p>
+                <div>
+                  <div style={{ marginBottom: '0.75rem' }}>
+                    <p className="font-semibold">
+                      Classification: 
+                      <select
+                        value={editableClassification}
+                        onChange={(e) => setEditableClassification(e.target.value)}
+                        className="ml-2 px-2 py-1 border border-gray-300 rounded text-sm font-semibold focus:outline-none focus:ring-1"
+                        style={{ focusRingColor: colorPalette.darkBlue }}
+                      >
+                        <option value="Minor Change">Minor Change</option>
+                        <option value="Significant Change">Significant Change</option>
+                        <option value="Major Change">Major Change</option>
+                      </select>
+                    </p>
+                  </div>
+                  
+                  <div style={{ marginBottom: '0.75rem' }}>
+                    <p className="font-semibold">
+                      Estimated Delay: {editableDelay === 0 ? (
+                        'No delay'
+                      ) : (
+                        <span className="inline-flex items-center gap-1">
+                          <input
+                            type="number"
+                            value={editableDelay}
+                            onChange={(e) => setEditableDelay(parseInt(e.target.value) || 0)}
+                            min="0"
+                            max="100"
+                            className="w-16 px-2 py-1 border border-gray-300 rounded text-sm font-semibold text-center focus:outline-none focus:ring-1"
+                            style={{ focusRingColor: colorPalette.darkBlue }}
+                          />
+                          business days
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                  
+                  {/* Editable Justification */}
+                  <div style={{ marginBottom: '0.75rem' }}>
+                    <label className="block font-semibold mb-2" style={{ color: colorPalette.darkBlue }}>
+                      Justification (editable):
+                    </label>
+                    <textarea
+                      value={editableJustification}
+                      onChange={(e) => setEditableJustification(e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-sm"
+                      style={{ 
+                        focusRingColor: colorPalette.darkBlue,
+                        minHeight: '80px',
+                        resize: 'vertical'
+                      }}
+                      placeholder="Edit the justification if needed..."
+                    />
+                  </div>
                   
                   {prediction.analysisDetails && (
                     <div className="mt-3 pt-3 border-t border-gray-300">
                       <h5 className="text-sm font-semibold mb-2" style={{ color: colorPalette.mediumBlue }}>
                         Historical Analysis:
                       </h5>
-                      <div className="text-sm space-y-1">
+                      <div className="text-sm space-y-3">
                         {prediction.analysisDetails.valueStreams.length > 0 && (
                           <p><strong>Value Streams:</strong> {prediction.analysisDetails.valueStreams.join(', ')}</p>
                         )}
@@ -745,6 +904,44 @@ Please respond in the following JSON format:
                       </div>
                     </div>
                   )}
+                </div>
+                
+                {/* Save Button */}
+                <div className="mt-6 flex justify-center">
+                  <button
+                    onClick={savePrediction}
+                    disabled={saveStatus === 'saving' || saveStatus === 'saved' || prediction.classification === 'Error'}
+                    className={`btn-primary btn-with-icon ${
+                      saveStatus === 'saved' ? 'btn-saved' : 
+                      saveStatus === 'saving' ? 'btn-saving' : ''
+                    }`}
+                    style={{
+                      background: saveStatus === 'saved' 
+                        ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' 
+                        : saveStatus === 'saving'
+                        ? 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)'
+                        : undefined, // Use default btn-primary gradient
+                      opacity: saveStatus === 'saving' ? 0.8 : undefined
+                    }}
+                  >
+                    {saveStatus === 'saved' ? (
+                      <svg className="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5"/>
+                      </svg>
+                    ) : saveStatus === 'saving' ? (
+                      <div className="btn-icon animate-spin">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 12a9 9 0 11-6.219-8.56"/>
+                        </svg>
+                      </div>
+                    ) : (
+                      <Save className="btn-icon" size={20} strokeWidth={2.5} />
+                    )}
+                    
+                    {saveStatus === 'saved' ? 'Successfully Saved!' :
+                     saveStatus === 'saving' ? 'Saving to Database...' :
+                     'Save to Database'}
+                  </button>
                 </div>
               </div>
             )}
