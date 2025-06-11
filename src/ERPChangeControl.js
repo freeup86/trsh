@@ -175,6 +175,15 @@ ${editableJustification}
 
 ${prediction.analysisDetails ? `
 ANALYSIS DETAILS:
+${prediction.analysisDetails.matchedKeywords && (
+  prediction.analysisDetails.matchedKeywords.minor.length > 0 || 
+  prediction.analysisDetails.matchedKeywords.significant.length > 0 || 
+  prediction.analysisDetails.matchedKeywords.major.length > 0
+) ? `• Matched Keywords: ${[
+  ...prediction.analysisDetails.matchedKeywords.minor.slice(0, 3),
+  ...prediction.analysisDetails.matchedKeywords.significant.slice(0, 3),
+  ...prediction.analysisDetails.matchedKeywords.major.slice(0, 3)
+].join(', ')}` : ''}
 ${prediction.analysisDetails.valueStreams && prediction.analysisDetails.valueStreams.length > 0 ? `• Value Streams Affected: ${prediction.analysisDetails.valueStreams.join(', ')}` : ''}
 ${prediction.analysisDetails.riskFactors && prediction.analysisDetails.riskFactors.length > 0 ? `• Risk Factors: ${prediction.analysisDetails.riskFactors.join(', ')}` : ''}
 • Complexity Score: ${prediction.analysisDetails.complexityScore}%
@@ -227,7 +236,8 @@ Training Impact Predictor System
               valueStreams: analysis.valueStreams,
               riskFactors: analysis.riskFactors.map(r => r.factor),
               complexityScore: Math.round(analysis.complexityScore * 100),
-              confidence: Math.round(analysis.confidence * 100)
+              confidence: Math.round(analysis.confidence * 100),
+              matchedKeywords: analysis.matchedKeywords
             }
           };
           
@@ -294,7 +304,8 @@ Please respond in the following JSON format:
           valueStreams: analysis.valueStreams,
           riskFactors: analysis.riskFactors.map(r => r.factor),
           complexityScore: Math.round(analysis.complexityScore * 100),
-          confidence: Math.round(analysis.confidence * 100)
+          confidence: Math.round(analysis.confidence * 100),
+          matchedKeywords: analysis.matchedKeywords
         }
       });
       
@@ -893,6 +904,19 @@ Please respond in the following JSON format:
                         Historical Analysis:
                       </h5>
                       <div className="text-sm space-y-3">
+                        {prediction.analysisDetails.matchedKeywords && (
+                          <>
+                            {prediction.analysisDetails.matchedKeywords.minor.length > 0 && (
+                              <p><strong>Minor Keywords:</strong> {prediction.analysisDetails.matchedKeywords.minor.slice(0, 5).join(', ')}{prediction.analysisDetails.matchedKeywords.minor.length > 5 ? '...' : ''}</p>
+                            )}
+                            {prediction.analysisDetails.matchedKeywords.significant.length > 0 && (
+                              <p><strong>Significant Keywords:</strong> {prediction.analysisDetails.matchedKeywords.significant.slice(0, 5).join(', ')}{prediction.analysisDetails.matchedKeywords.significant.length > 5 ? '...' : ''}</p>
+                            )}
+                            {prediction.analysisDetails.matchedKeywords.major.length > 0 && (
+                              <p><strong>Major Keywords:</strong> {prediction.analysisDetails.matchedKeywords.major.slice(0, 5).join(', ')}{prediction.analysisDetails.matchedKeywords.major.length > 5 ? '...' : ''}</p>
+                            )}
+                          </>
+                        )}
                         {prediction.analysisDetails.valueStreams.length > 0 && (
                           <p><strong>Value Streams:</strong> {prediction.analysisDetails.valueStreams.join(', ')}</p>
                         )}

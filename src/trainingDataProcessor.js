@@ -2,6 +2,58 @@
 // Processes historical data from ClickUp and ISG spreadsheets
 
 export const trainingDataProcessor = {
+  // Change definitions from Change_Definitions.csv
+  changeDefinitions: {
+    minor: {
+      keywords: [
+        'quick note', 'tip', 'quick reference', 'link', 'caption', 'label',
+        'font', 'color', 'emphasis', 'slide title', 'header', 'clarification',
+        'fact correction', 'minor script edit', 'voiceover', 'reorder bullet',
+        'swap image', 'icon', 'terminology tweak', 'adjust word', 'narration',
+        'audio suggestion', 'video suggestion', 'sequence of points',
+        'content adjustment', 'highlight keyword', 'hyperlink', 'resource',
+        'glossary', 'side note', 'tip box', 'stock image', 'replace term',
+        'rewording for clarity', 'slight rewording', 'update date', 'statistic',
+        'name', 'screenshot', 'field addition', 'field removal'
+      ],
+      delayRange: { min: 0, max: 5 }
+    },
+    significant: {
+      keywords: [
+        'media overhaul', 'interactivity overhaul', 'delay sme', 'sme feedback',
+        'assessment', 'certification requirement', 'content rewrite', 'module',
+        'course flow', 'sequence', 'compliance', 'legal requirement',
+        'new stakeholder', 'complex interaction', 'simulation', 'learning objective',
+        'legal review', 'tone', 'instructional strategy', 'structural change',
+        'bottleneck', 'review cycle', 'reformat', 'rebuild', 'valid assessment',
+        'reliable assessment', 'lms integration', 'custom video', 'animation',
+        'instructional design', 'programming', 'branching scenario', 'drag-and-drop',
+        'media production', 'target audience', 'skill level', 'reorganization',
+        'navigation logic', 'scripting', 'storyboarding', 'production', 'editing',
+        'vague feedback', 'contradictory feedback'
+      ],
+      delayRange: { min: 5, max: 10 }
+    },
+    major: {
+      keywords: [
+        'tooling overhaul', 'platform overhaul', 'pilot feedback', 'testing feedback',
+        'sme unavailable', 'compliance change', 'legal change', 'policy change',
+        'delivery format', 'wbt to ilt', 'ilt to wbt', 'target audience',
+        'stakeholder disruption', 'resource disruption', 'leadership change',
+        'organizational change', 'tech stack', 'integration issue', 'course purpose',
+        'course goal', 'key sme loss', 'sensitive topic', 'legal team', 'brand team',
+        'strategic shift', 'directional shift', 'regulatory requirement',
+        'pilot flaw', 'major flaw', 'redesign', 'budget freeze', 'funding cut',
+        'lms change', 'authoring tool', 'hris', 'crm', 'compliance tracking',
+        'business objective', 'learning outcome', 'instructor-led', 'entry-level',
+        'senior manager', 'complete redesign', 'financial constraint', 'priority shift',
+        'negative pilot', 'accessibility failure', 'usability failure',
+        'accessibility audit', 'usability testing', 'platform change'
+      ],
+      delayRange: { min: 11, max: 30 }
+    }
+  },
+
   // Historical patterns extracted from spreadsheets
   historicalData: {
     // Average delays by Value Stream (based on ISG data analysis)
@@ -55,17 +107,41 @@ export const trainingDataProcessor = {
     }
   },
 
-  // Analyze change description using historical patterns
+  // Check if description contains any keywords from a category
+  checkKeywords(description, keywords) {
+    const descLower = description.toLowerCase();
+    const matches = [];
+    
+    for (const keyword of keywords) {
+      if (descLower.includes(keyword.toLowerCase())) {
+        matches.push(keyword);
+      }
+    }
+    
+    return matches;
+  },
+
+  // Analyze change description using historical patterns and keyword matching
   analyzeChange(description) {
     const analysis = {
       valueStreams: [],
       riskFactors: [],
       complexityScore: 0,
       estimatedDelay: 0,
-      confidence: 0
+      confidence: 0,
+      matchedKeywords: {
+        minor: [],
+        significant: [],
+        major: []
+      }
     };
 
     const descLower = description.toLowerCase();
+    
+    // Check for keyword matches from change definitions
+    analysis.matchedKeywords.minor = this.checkKeywords(description, this.changeDefinitions.minor.keywords);
+    analysis.matchedKeywords.significant = this.checkKeywords(description, this.changeDefinitions.significant.keywords);
+    analysis.matchedKeywords.major = this.checkKeywords(description, this.changeDefinitions.major.keywords);
 
     // Identify affected value streams
     Object.keys(this.historicalData.valueStreamDelays).forEach(stream => {
@@ -98,14 +174,30 @@ export const trainingDataProcessor = {
   },
 
   calculateComplexity(description, analysis) {
-    let complexity = 0.5; // Base complexity
+    let complexity = 0.3; // Base complexity
+
+    // Keyword-based complexity
+    const keywordWeight = {
+      minor: 0.1,
+      significant: 0.3,
+      major: 0.6
+    };
+    
+    // Add complexity based on matched keywords
+    if (analysis.matchedKeywords.major.length > 0) {
+      complexity += keywordWeight.major * (1 + analysis.matchedKeywords.major.length * 0.1);
+    } else if (analysis.matchedKeywords.significant.length > 0) {
+      complexity += keywordWeight.significant * (1 + analysis.matchedKeywords.significant.length * 0.1);
+    } else if (analysis.matchedKeywords.minor.length > 0) {
+      complexity += keywordWeight.minor * (1 + analysis.matchedKeywords.minor.length * 0.05);
+    }
 
     // Value stream complexity
     if (analysis.valueStreams.length > 0) {
       const avgRisk = analysis.valueStreams.reduce((sum, stream) => {
         return sum + this.historicalData.valueStreamDelays[stream].riskFactor;
       }, 0) / analysis.valueStreams.length;
-      complexity += avgRisk * 0.3;
+      complexity += avgRisk * 0.2;
     }
 
     // Risk factor complexity
@@ -113,7 +205,7 @@ export const trainingDataProcessor = {
       const avgSeverity = analysis.riskFactors.reduce((sum, risk) => {
         return sum + risk.severity;
       }, 0) / analysis.riskFactors.length;
-      complexity += avgSeverity * 0.4;
+      complexity += avgSeverity * 0.3;
     }
 
     // Module count estimation (heuristic based on description length and keywords)
@@ -165,36 +257,70 @@ export const trainingDataProcessor = {
   calculateConfidence(analysis) {
     let confidence = 0.5; // Base confidence
 
+    // Higher confidence with keyword matches
+    const totalKeywords = analysis.matchedKeywords.minor.length + 
+                         analysis.matchedKeywords.significant.length + 
+                         analysis.matchedKeywords.major.length;
+    
+    if (totalKeywords > 0) {
+      confidence += Math.min(totalKeywords * 0.05, 0.25); // Up to 25% boost for keywords
+    }
+    
     // Higher confidence with more data points
-    if (analysis.valueStreams.length > 0) confidence += 0.2;
-    if (analysis.riskFactors.length > 0) confidence += 0.15;
-    if (analysis.complexityScore > 0.7) confidence += 0.1;
+    if (analysis.valueStreams.length > 0) confidence += 0.15;
+    if (analysis.riskFactors.length > 0) confidence += 0.1;
+    if (analysis.complexityScore > 0.7) confidence += 0.05;
     if (analysis.valueStreams.length > 1) confidence += 0.05;
 
     return Math.min(confidence, 0.95); // Cap at 95%
   },
 
-  // Classify change based on historical patterns
+  // Classify change based on historical patterns and keyword matches
   classifyChange(analysis) {
-    const { complexityScore, estimatedDelay, riskFactors } = analysis;
-
-    // Classification based on historical thresholds
+    const { complexityScore, estimatedDelay, riskFactors, matchedKeywords } = analysis;
+    
+    // Priority classification based on keyword matches
+    if (matchedKeywords.major.length > 0) {
+      const keywordList = matchedKeywords.major.slice(0, 3).join(', ');
+      const otherKeywords = matchedKeywords.major.length > 3 ? ` and ${matchedKeywords.major.length - 3} more` : '';
+      return {
+        classification: 'Major Change',
+        justification: `This request contains major change indicators: ${keywordList}${otherKeywords}. ${analysis.valueStreams.length > 0 ? `Affects ${analysis.valueStreams.join(', ')} value streams. ` : ''}These changes typically require extensive coordination, approvals, and potential project restructuring. Historical data shows similar changes taking 11+ days with high impact on timelines.`,
+        daysDelay: Math.max(estimatedDelay, 11)
+      };
+    } else if (matchedKeywords.significant.length > 0) {
+      const keywordList = matchedKeywords.significant.slice(0, 3).join(', ');
+      return {
+        classification: 'Significant Change',
+        justification: `This request involves significant modifications: ${keywordList}. ${riskFactors.length > 0 ? `Risk factors: ${riskFactors.map(r => r.factor).join(', ')}. ` : ''}These changes require formal review processes and may impact multiple course components. Expected delay of 5-10 days based on similar historical changes.`,
+        daysDelay: Math.max(Math.min(estimatedDelay, 10), 5)
+      };
+    } else if (matchedKeywords.minor.length > 0) {
+      const keywordList = matchedKeywords.minor.slice(0, 3).join(', ');
+      return {
+        classification: 'Minor Change',
+        justification: `This request includes minor adjustments: ${keywordList}. These changes can be implemented quickly without disrupting the overall development flow. Historical data shows completion within 0-5 days.`,
+        daysDelay: Math.min(estimatedDelay, 5)
+      };
+    }
+    
+    // Fallback to complexity-based classification if no keywords match
     if (estimatedDelay <= 4 && complexityScore < 0.3 && riskFactors.length === 0) {
       return {
         classification: 'Minor Change',
-        justification: 'Historical data indicates minimal complexity and risk. Similar changes typically complete within 4 days with no significant delays.',
+        justification: 'Analysis indicates minimal complexity and risk. Similar changes typically complete within 4 days with no significant delays.',
         daysDelay: estimatedDelay
       };
     } else if (estimatedDelay <= 10 && complexityScore < 0.7) {
       return {
         classification: 'Significant Change',
-        justification: `Based on historical patterns from ${analysis.valueStreams.join(', ') || 'similar'} value streams, this change shows moderate complexity. ${riskFactors.length > 0 ? `Risk factors identified: ${riskFactors.map(r => r.factor).join(', ')}.` : ''} Expected timeline impact aligns with past significant changes.`,
+        justification: `Based on patterns from ${analysis.valueStreams.join(', ') || 'similar'} value streams, this change shows moderate complexity. ${riskFactors.length > 0 ? `Risk factors identified: ${riskFactors.map(r => r.factor).join(', ')}.` : ''} Expected timeline impact aligns with past significant changes.`,
         daysDelay: estimatedDelay
       };
     } else {
       return {
         classification: 'Major Change',
-        justification: `Historical analysis indicates high complexity (score: ${(complexityScore * 100).toFixed(0)}%). ${analysis.valueStreams.length > 0 ? `Affects critical value streams: ${analysis.valueStreams.join(', ')}.` : ''} ${riskFactors.length > 0 ? `Multiple risk factors present: ${riskFactors.slice(0, 3).map(r => r.factor).join(', ')}.` : ''} Similar changes historically required extensive coordination and replanning.`,
+        justification: `Analysis indicates high complexity (score: ${(complexityScore * 100).toFixed(0)}%). ${analysis.valueStreams.length > 0 ? `Affects critical value streams: ${analysis.valueStreams.join(', ')}.` : ''} ${riskFactors.length > 0 ? `Multiple risk factors present: ${riskFactors.slice(0, 3).map(r => r.factor).join(', ')}.` : ''} Similar changes historically required extensive coordination and replanning.`,
         daysDelay: estimatedDelay
       };
     }
