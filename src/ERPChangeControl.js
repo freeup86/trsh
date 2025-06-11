@@ -912,7 +912,7 @@ Please respond in the following JSON format:
                   {/* Editable Justification */}
                   <div style={{ marginBottom: '0.75rem' }}>
                     <label className="block font-semibold mb-2" style={{ color: colorPalette.darkBlue }}>
-                      Justification (editable):
+                      Justification:
                     </label>
                     <textarea
                       value={editableJustification}
