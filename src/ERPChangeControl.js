@@ -845,7 +845,7 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
           <p className="text-center text-gray-600 max-w-3xl mx-auto mb-6">
             Our predictor primarily uses training material data from ai_training_material/ (335+ courses, 1,500+ modules) to analyze changes. AI enhancement provides secondary validation when confidence is low, ensuring accurate predictions based on real project outcomes.
           </p>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center w-full">
             <textarea
               value={changeDescription}
               onChange={(e) => setChangeDescription(e.target.value)}
@@ -874,10 +874,12 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
             )}
             
             {prediction && !isLoading && (
-              <div className="mt-6 p-4 w-full max-w-xl bg-gray-100 rounded-md">
-                <h4 className="font-semibold mb-2" style={{ color: colorPalette.darkBlue }}>
-                  Enhanced Prediction Results:
-                </h4>
+              <div className="mt-6 w-full flex gap-4 justify-center">
+                {/* Main Results Panel */}
+                <div className="p-4 bg-gray-100 rounded-md" style={{ width: '700px' }}>
+                  <h4 className="font-semibold mb-2" style={{ color: colorPalette.darkBlue }}>
+                    Enhanced Prediction Results:
+                  </h4>
                 <div>
                   <div style={{ marginBottom: '0.75rem' }}>
                     <p className="font-semibold">
@@ -1004,6 +1006,31 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                      'Save to Database'}
                   </button>
                 </div>
+                </div>
+                
+                {/* Notification Panel */}
+                {(editableClassification === 'Significant Change' || editableClassification === 'Major Change') && (
+                  <div className="w-48 p-2 bg-orange-50 border border-orange-200 rounded-md self-start flex-shrink-0">
+                    <div className="flex items-start gap-1">
+                      <AlertCircle className="text-orange-500 mt-0.5 flex-shrink-0" size={14} />
+                      <div>
+                        <h5 className="font-semibold text-orange-800 mb-1 text-xs">
+                          Action Required
+                        </h5>
+                        {editableClassification === 'Significant Change' ? (
+                          <p className="text-xs text-orange-700 leading-tight">
+                            <strong>Notify:</strong><br />
+                            VSPO, PO, Sarah Gentry, Hala Amer, Chris Fisher, Emily Shin, OCM Lead
+                          </p>
+                        ) : (
+                          <p className="text-xs text-orange-700 leading-tight">
+                            <strong>Notify stakeholders & request VSPO/PO verification</strong>
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
