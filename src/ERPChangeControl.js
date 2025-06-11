@@ -216,24 +216,70 @@ Training Impact Predictor System
     setEditableClassification(''); // Reset editable classification
     
     try {
-      // Check if API key is available
+      // Primary: Use training material data from ai_training_material folder
+      const analysis = trainingDataProcessor.analyzeChange(changeDescription);
+      const trainingResult = trainingDataProcessor.classifyChange(analysis);
+      
+      // Check confidence level to determine if Claude enhancement is needed
+      const useClaudeEnhancement = analysis.confidence < 0.7; // Use Claude if confidence < 70%
       const apiKey = process.env.REACT_APP_ANTHROPIC_API_KEY;
       
-      if (!apiKey || apiKey === 'your_anthropic_api_key_here') {
-        // Use enhanced prediction model based on historical data
-        setTimeout(() => {
-          const analysis = trainingDataProcessor.analyzeChange(changeDescription);
-          const result = trainingDataProcessor.classifyChange(analysis);
+      if (useClaudeEnhancement && apiKey && apiKey !== 'your_anthropic_api_key_here') {
+        // Secondary: Enhance with Claude AI when confidence is low
+        const anthropic = new Anthropic({
+          apiKey: apiKey,
+          dangerouslyAllowBrowser: true,
+          defaultHeaders: {
+            'anthropic-dangerous-direct-browser-access': 'true'
+          }
+        });
+
+        const prompt = `You are an expert in ERP training change management. I have a primary prediction from historical training data, but the confidence is low (${Math.round(analysis.confidence * 100)}%). Please review and enhance the prediction if needed.
+
+Change description: "${changeDescription}"
+
+Primary prediction from training material analysis:
+- Classification: ${trainingResult.classification}
+- Days delay: ${trainingResult.daysDelay}
+- Justification: ${trainingResult.justification}
+
+Historical data analysis:
+- Affected value streams: ${analysis.valueStreams.length > 0 ? analysis.valueStreams.join(', ') : 'Not identified'}
+- Risk factors: ${analysis.riskFactors.map(r => r.factor).join(', ') || 'None'}
+- Matched keywords: ${Object.entries(analysis.matchedKeywords).filter(([key, keywords]) => keywords.length > 0).map(([key, keywords]) => `${key}: ${keywords.slice(0, 3).join(', ')}`).join('; ') || 'None'}
+
+Please either confirm the primary prediction or provide an enhanced assessment. Respond in JSON format:
+{
+  "classification": "Minor Change|Significant Change|Major Change",
+  "daysDelay": number,
+  "justification": "enhanced explanation that builds on historical insights",
+  "enhanced": true|false
+}`;
+
+        try {
+          const message = await anthropic.messages.create({
+            model: "claude-3-haiku-20240307",
+            max_tokens: 500,
+            messages: [{ role: "user", content: prompt }]
+          });
+
+          const response = message.content[0].text;
+          const parsedResponse = JSON.parse(response);
           
-          // Add analysis details to the result
+          // Use Claude-enhanced result
           const enhancedResult = {
-            ...result,
+            classification: parsedResponse.classification,
+            justification: parsedResponse.enhanced ? 
+              parsedResponse.justification : 
+              trainingResult.justification,
+            daysDelay: parsedResponse.daysDelay,
             analysisDetails: {
               valueStreams: analysis.valueStreams,
               riskFactors: analysis.riskFactors.map(r => r.factor),
               complexityScore: Math.round(analysis.complexityScore * 100),
               confidence: Math.round(analysis.confidence * 100),
-              matchedKeywords: analysis.matchedKeywords
+              matchedKeywords: analysis.matchedKeywords,
+              source: 'Training Material + AI Enhanced'
             }
           };
           
@@ -242,72 +288,33 @@ Training Impact Predictor System
           setEditableDelay(enhancedResult.daysDelay);
           setEditableClassification(enhancedResult.classification);
           setIsLoading(false);
-        }, 1500);
-        return;
+          return;
+        } catch (claudeError) {
+          console.warn('Claude enhancement failed, using training data result:', claudeError);
+          // Fall back to training data result
+        }
       }
-
-      // Use Claude API with enhanced context from historical data
-      const analysis = trainingDataProcessor.analyzeChange(changeDescription);
-      const historicalResult = trainingDataProcessor.classifyChange(analysis);
       
-      const anthropic = new Anthropic({
-        apiKey: apiKey,
-        dangerouslyAllowBrowser: true, // Note: In production, you should use a backend proxy
-        defaultHeaders: {
-          'anthropic-dangerous-direct-browser-access': 'true'
-        }
-      });
-
-      const prompt = `You are an expert in ERP training change management with access to historical project data. Your task is to classify a proposed change into one of three categories: 'Minor Change', 'Significant Change', or 'Major Change' and estimate the days delay.
-
-Change description: "${changeDescription}"
-
-Historical analysis suggests:
-- Affected value streams: ${analysis.valueStreams.length > 0 ? analysis.valueStreams.join(', ') : 'Not identified'}
-- Risk factors detected: ${analysis.riskFactors.map(r => r.factor).join(', ') || 'None'}
-- Complexity score: ${Math.round(analysis.complexityScore * 100)}%
-- Initial estimate: ${historicalResult.classification} with ${historicalResult.daysDelay} days delay
-- Confidence level: ${Math.round(analysis.confidence * 100)}%
-
-Please provide your expert assessment, considering this historical context and your knowledge of ERP training projects.
-
-Please respond in the following JSON format:
-{
-  "classification": "Minor Change|Significant Change|Major Change",
-  "daysDelay": number,
-  "justification": "brief explanation incorporating historical insights"
-}`;
-
-      const message = await anthropic.messages.create({
-        model: "claude-3-haiku-20240307",
-        max_tokens: 500,
-        messages: [
-          {
-            role: "user",
-            content: prompt
+      // Use primary training material result (either high confidence or Claude unavailable)
+      setTimeout(() => {
+        const finalResult = {
+          ...trainingResult,
+          analysisDetails: {
+            valueStreams: analysis.valueStreams,
+            riskFactors: analysis.riskFactors.map(r => r.factor),
+            complexityScore: Math.round(analysis.complexityScore * 100),
+            confidence: Math.round(analysis.confidence * 100),
+            matchedKeywords: analysis.matchedKeywords,
+            source: 'Training Material'
           }
-        ]
-      });
-
-      const response = message.content[0].text;
-      const parsedResponse = JSON.parse(response);
-      
-      setPrediction({
-        classification: parsedResponse.classification,
-        justification: parsedResponse.justification,
-        daysDelay: parsedResponse.daysDelay,
-        analysisDetails: {
-          valueStreams: analysis.valueStreams,
-          riskFactors: analysis.riskFactors.map(r => r.factor),
-          complexityScore: Math.round(analysis.complexityScore * 100),
-          confidence: Math.round(analysis.confidence * 100),
-          matchedKeywords: analysis.matchedKeywords
-        }
-      });
-      
-      setEditableJustification(parsedResponse.justification);
-      setEditableDelay(parsedResponse.daysDelay);
-      setEditableClassification(parsedResponse.classification);
+        };
+        
+        setPrediction(finalResult);
+        setEditableJustification(finalResult.justification);
+        setEditableDelay(finalResult.daysDelay);
+        setEditableClassification(finalResult.classification);
+        setIsLoading(false);
+      }, 1000); // Shorter delay since we're using local data
       
     } catch (error) {
       console.error('Error calling Claude API:', error);
@@ -836,7 +843,7 @@ Please respond in the following JSON format:
             ✨ Enhanced Training Impact Predictor ✨
           </h2>
           <p className="text-center text-gray-600 max-w-3xl mx-auto mb-6">
-            Our enhanced AI predictor uses historical data from 335+ courses and 1,500+ modules to analyze your proposed change. It identifies value streams, risk factors, and complexity patterns based on real project outcomes to provide accurate impact predictions.
+            Our predictor primarily uses training material data from ai_training_material/ (335+ courses, 1,500+ modules) to analyze changes. AI enhancement provides secondary validation when confidence is low, ensuring accurate predictions based on real project outcomes.
           </p>
           <div className="flex flex-col items-center">
             <textarea
