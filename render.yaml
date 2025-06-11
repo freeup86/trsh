@@ -20,10 +20,7 @@ services:
       - key: REACT_APP_ANTHROPIC_API_KEY
         sync: false
       - key: REACT_APP_API_URL
-        fromService:
-          type: web
-          name: trsh-backend
-          property: url
+        value: https://trsh-backend.onrender.com
 
   # Backend - Express API Server
   - type: web
@@ -40,7 +37,4 @@ services:
       - key: NODE_TLS_REJECT_UNAUTHORIZED
         value: "0"
       - key: FRONTEND_URL
-        fromService:
-          type: web
-          name: trsh-dashboard
-          property: url
+        value: https://trsh-x3tb.onrender.com
