@@ -184,8 +184,6 @@ ${prediction.analysisDetails.matchedKeywords && (
 ].join(', ')}` : ''}
 ${prediction.analysisDetails.valueStreams && prediction.analysisDetails.valueStreams.length > 0 ? `• Value Streams Affected: ${prediction.analysisDetails.valueStreams.join(', ')}` : ''}
 ${prediction.analysisDetails.riskFactors && prediction.analysisDetails.riskFactors.length > 0 ? `• Risk Factors: ${prediction.analysisDetails.riskFactors.join(', ')}` : ''}
-• Complexity Score: ${prediction.analysisDetails.complexityScore}%
-• Confidence Level: ${prediction.analysisDetails.confidence}%
 ` : ''}
 
 Please review this impact assessment and take appropriate action.
