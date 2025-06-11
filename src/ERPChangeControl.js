@@ -878,8 +878,9 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
             <textarea
               value={changeDescription}
               onChange={(e) => setChangeDescription(e.target.value)}
-              className="w-full max-w-xl p-3 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2"
+              className="w-full max-w-xl border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2"
               style={{ 
+                padding: '12px',
                 focusRingColor: colorPalette.darkBlue,
                 fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
               }}
@@ -903,7 +904,7 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
             )}
             
             {prediction && !isLoading && (
-              <div className="mt-6 w-full flex gap-4 justify-center">
+              <div className="mt-6 w-full flex gap-4 justify-center items-start">
                 {/* Main Results Panel */}
                 <div className="p-4 bg-gray-100 rounded-md" style={{ width: '700px' }}>
                   <h4 className="font-semibold mb-2" style={{ color: colorPalette.darkBlue }}>
@@ -955,8 +956,9 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                     <textarea
                       value={editableJustification}
                       onChange={(e) => setEditableJustification(e.target.value)}
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-sm"
+                      className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-sm"
                       style={{ 
+                        padding: '12px',
                         focusRingColor: colorPalette.darkBlue,
                         minHeight: '120px',
                         resize: 'vertical',
@@ -1039,20 +1041,26 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                 
                 {/* Notification Panel */}
                 {(editableClassification === 'Significant Change' || editableClassification === 'Major Change') && (
-                  <div className="w-48 p-2 bg-orange-50 border border-orange-200 rounded-md self-start flex-shrink-0">
-                    <div className="flex items-start gap-1">
-                      <AlertCircle className="text-orange-500 mt-0.5 flex-shrink-0" size={14} />
-                      <div>
-                        <h5 className="font-semibold text-orange-800 mb-1 text-xs">
-                          Action Required:
+                  <div className="relative self-start flex-shrink-0" style={{ width: '300px', textAlign: 'left' }}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 rounded-xl blur-sm opacity-70"></div>
+                    <div className="relative bg-gradient-to-br from-white via-amber-50/80 to-orange-50/60 backdrop-blur-sm border border-amber-200/60 rounded-xl shadow-lg" style={{ padding: '12px', textAlign: 'left' }}>
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="flex-shrink-0 w-5 h-5 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-sm">
+                          <AlertCircle className="text-white" size={10} strokeWidth={3} />
+                        </div>
+                        <h5 className="font-extrabold text-amber-900 text-xs tracking-wide uppercase">
+                          &nbsp;Action Required
                         </h5>
+                      </div>
+                      <div className="pl-8 pr-2" style={{ textAlign: 'left' }}>
                         {editableClassification === 'Significant Change' ? (
-                          <p className="text-xs text-orange-700 leading-tight">
-                            <br/>Notify Stakeholders: VSPO, PO, Sarah Gentry, Hala Amer, Chris Fisher, Emily Shin, OCM Lead.
+                          <p className="text-xs text-amber-800 leading-relaxed font-semibold" style={{ textAlign: 'left' }}>
+                            <span className="text-amber-700">Notify: VSPO, PO, Sarah Gentry, Hala Amer, Chris Fisher, Emily Shin, OCM Lead</span>
                           </p>
                         ) : (
-                          <p className="text-xs text-orange-700 leading-tight">
-                            <br/>Notify stakeholders & request VSPO/PO verification.&nbsp;
+                          <p className="text-xs text-amber-800 leading-relaxed font-semibold" style={{ textAlign: 'left' }}>
+                            <span className="text-amber-700">Notify: VSPO, PO, Sarah Gentry, Hala Amer, Chris Fisher, Emily Shin, OCM Lead</span><br/><br/>
+                            <span className="text-amber-700">Request VSPO/PO verification</span>
                           </p>
                         )}
                       </div>
