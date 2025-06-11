@@ -1015,16 +1015,15 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                       <AlertCircle className="text-orange-500 mt-0.5 flex-shrink-0" size={14} />
                       <div>
                         <h5 className="font-semibold text-orange-800 mb-1 text-xs">
-                          Action Required
+                          Action Required:
                         </h5>
                         {editableClassification === 'Significant Change' ? (
                           <p className="text-xs text-orange-700 leading-tight">
-                            <strong>Notify:</strong><br />
-                            VSPO, PO, Sarah Gentry, Hala Amer, Chris Fisher, Emily Shin, OCM Lead
+                            <br/>Notify Stakeholders: VSPO, PO, Sarah Gentry, Hala Amer, Chris Fisher, Emily Shin, OCM Lead.
                           </p>
                         ) : (
                           <p className="text-xs text-orange-700 leading-tight">
-                            <strong>Notify stakeholders & request VSPO/PO verification</strong>
+                            <br/>Notify stakeholders & request VSPO/PO verification.&nbsp;
                           </p>
                         )}
                       </div>
