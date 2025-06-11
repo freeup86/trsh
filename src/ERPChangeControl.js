@@ -445,28 +445,28 @@ Please respond in the following JSON format:
                 {
                   number: "3",
                   title: "Ticketing",
-                  subtitle: "VS Lead Submits Ticket",
+                  subtitle: "VS lead submits ticket if due dates are impacted",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 },
                 {
                   number: "4",
-                  title: "Pause & Communicate",
-                  subtitle: "Course is paused pending stakeholder approval",
+                  title: "Pause Course",
+                  subtitle: "Course is paused pending stakeholder approval for Major changes",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 },
                 {
                   number: "5",
-                  title: "Stakeholder Notification",
-                  subtitle: "Ticket defines request & identifies stakeholders",
+                  title: "Stakeholder Communication",
+                  subtitle: "Notify stakeholders or request approval based on requested change",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 },
                 {
                   number: "6",
                   title: "Approval & Resumption",
-                  subtitle: "VS Lead updates status to appropriate sprint",
+                  subtitle: "Once approval is received, course is moved to later sprint",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 }
@@ -547,18 +547,48 @@ Please respond in the following JSON format:
                     </text>
                     
                     {/* Title text */}
-                    <text
-                      x={textX}
-                      y={textY - 10}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                      fill={colorPalette.darkBlue}
-                      fontSize="13"
-                      fontWeight="bold"
-                      style={{ pointerEvents: 'none' }}
-                    >
-                      {step.title}
-                    </text>
+                    {step.title.includes(' ') && step.title.length > 15 ? (
+                      // Split long titles into two lines
+                      <>
+                        <text
+                          x={textX}
+                          y={textY - 18}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          fill={colorPalette.darkBlue}
+                          fontSize="13"
+                          fontWeight="bold"
+                          style={{ pointerEvents: 'none' }}
+                        >
+                          {step.title.split(' ').slice(0, Math.ceil(step.title.split(' ').length / 2)).join(' ')}
+                        </text>
+                        <text
+                          x={textX}
+                          y={textY - 5}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          fill={colorPalette.darkBlue}
+                          fontSize="13"
+                          fontWeight="bold"
+                          style={{ pointerEvents: 'none' }}
+                        >
+                          {step.title.split(' ').slice(Math.ceil(step.title.split(' ').length / 2)).join(' ')}
+                        </text>
+                      </>
+                    ) : (
+                      <text
+                        x={textX}
+                        y={textY - 10}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        fill={colorPalette.darkBlue}
+                        fontSize="13"
+                        fontWeight="bold"
+                        style={{ pointerEvents: 'none' }}
+                      >
+                        {step.title}
+                      </text>
+                    )}
                     
                     {/* Subtitle text - wrapped */}
                     <foreignObject
