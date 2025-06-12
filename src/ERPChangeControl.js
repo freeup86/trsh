@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LineChart, Line, BarChart, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { ArrowRight, FileText, MessageSquare, RotateCw, Award, Search, Users, UserPlus, Clock, AlertCircle, Save } from 'lucide-react';
+import { ArrowRight, FileText, MessageSquare, RotateCw, Award, Search, Users, UserPlus, Clock, AlertCircle, Save, Download } from 'lucide-react';
 import Anthropic from '@anthropic-ai/sdk';
 import { trainingDataProcessor } from './trainingDataProcessor';
+import * as XLSX from 'xlsx';
 
 const ERPChangeControl = () => {
   const [changeDescription, setChangeDescription] = useState('');
@@ -209,7 +210,7 @@ const ERPChangeControl = () => {
         .alert-banner { background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin-bottom: 20px; }
         .alert-title { font-weight: bold; color: #856404; font-size: 12pt; }
         h2 { color: #0078d4; font-size: 12pt; margin: 20px 0 10px 0; border-bottom: 1px solid #e1e1e1; padding-bottom: 5px; }
-        .section { margin-bottom: 20px; }
+        .section { margin-bottom: 0px; }
         .change-description { background-color: #f8f9fa; border-left: 4px solid #0078d4; padding: 15px; margin: 10px 0; border-radius: 0 4px 4px 0; }
         .impact-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
         .impact-table td { padding: 8px 12px; border: 1px solid #e1e1e1; }
@@ -229,14 +230,14 @@ const ERPChangeControl = () => {
         <p>A <b>${editableClassification}</b> has been identified for the [value stream], [value substream] value stream in the [course(s)]. Please review the description of the change, the impact assessment, and the next steps plan.</p>
 
         <div class="section">
-            <h2>📋 Change Description</h2>
+            <h2>Change Description</h2>
             <div class="change-description">
                 ${changeDescription.replace(/\n/g, '<br>')}
             </div>
-        </div>
+        </div><br/>
 
         <div class="section">
-            <h2>📊 Impact Assessment</h2>
+            <h2>Impact Assessment</h2>
             <table class="impact-table">
                 <tr>
                     <td class="label">Classification:</td>
@@ -247,17 +248,17 @@ const ERPChangeControl = () => {
                     <td>${editableDelay === 0 ? 'No delay expected' : `${editableDelay} business days`}</td>
                 </tr>
             </table>
-        </div>
+        </div><br/>
 
         <div class="section">
-            <h2>💭 Justification</h2>
+            <h2>Justification</h2>
             <div class="justification">
                 ${editableJustification.replace(/\n/g, '<br>')}
             </div>
-        </div>
+        </div><br/>
 
         <div class="section">
-            <h2>📝 Next Steps</h2>
+            <h2>Next Steps</h2>
             <div class="next-steps" style="text-align: left;">
                 <ul>
                     <li></li>
@@ -355,6 +356,79 @@ const ERPChangeControl = () => {
     `);
     
     emailWindow.document.close();
+  };
+
+  // Export all prediction data from database to Excel
+  const exportToExcel = async () => {
+    try {
+      // Fetch all predictions from the database
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/predictions`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch prediction data from database');
+      }
+      
+      const responseData = await response.json();
+      
+      if (!responseData.success || !responseData.data || responseData.data.length === 0) {
+        alert('No prediction data found in the database to export.');
+        return;
+      }
+
+      const allPredictions = responseData.data;
+
+      // Prepare data for Excel export
+      const exportData = allPredictions.map((pred, index) => ({
+        'Record #': index + 1,
+        'Date Created': pred.created_at ? new Date(pred.created_at).toLocaleString() : 'Unknown',
+        'Change Description': pred.change_description || 'Not provided',
+        'Classification': pred.classification || 'Not classified',
+        'Estimated Delay (Days)': pred.days_delay || 0,
+        'Justification': pred.justification || 'Not provided',
+        'Value Streams': Array.isArray(pred.value_streams) ? pred.value_streams.join(', ') : (pred.value_streams || 'Not specified'),
+        'Risk Factors': Array.isArray(pred.risk_factors) ? pred.risk_factors.join(', ') : (pred.risk_factors || 'None'),
+        'Complexity Score': pred.complexity_score || 'N/A',
+        'Confidence Level': pred.confidence_level || 'N/A',
+        'User ID': pred.user_id || 'Anonymous',
+        'Session ID': pred.session_id || 'N/A',
+        'Prediction ID': pred.id || 'N/A'
+      }));
+
+      // Create workbook and worksheet
+      const ws = XLSX.utils.json_to_sheet(exportData);
+      const wb = XLSX.utils.book_new();
+      
+      // Set column widths for better readability
+      const columnWidths = [
+        { wch: 10 }, // Record #
+        { wch: 20 }, // Date Created
+        { wch: 50 }, // Change Description
+        { wch: 20 }, // Classification
+        { wch: 20 }, // Estimated Delay
+        { wch: 50 }, // Justification
+        { wch: 30 }, // Value Streams
+        { wch: 30 }, // Risk Factors
+        { wch: 15 }, // Complexity Score
+        { wch: 15 }, // Confidence Level
+        { wch: 20 }, // User ID
+        { wch: 25 }, // Session ID
+        { wch: 15 }  // Prediction ID
+      ];
+      ws['!cols'] = columnWidths;
+      
+      XLSX.utils.book_append_sheet(wb, ws, 'All Training Impact Predictions');
+      
+      // Generate filename with timestamp and record count
+      const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+      const filename = `All_Training_Impact_Predictions_${allPredictions.length}_records_${timestamp}.xlsx`;
+      
+      // Save the file
+      XLSX.writeFile(wb, filename);
+      
+    } catch (error) {
+      console.error('Error exporting to Excel:', error);
+      alert('Failed to export data to Excel. Please try again or check your connection.');
+    }
   };
 
   const predictImpact = async () => {
@@ -1129,8 +1203,8 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                   )}
                 </div>
                 
-                {/* Save Button */}
-                <div className="mt-6 flex justify-center">
+                {/* Save and Export Buttons */}
+                <div className="mt-6 flex justify-center gap-4">
                   <button
                     onClick={savePrediction}
                     disabled={saveStatus === 'saving' || saveStatus === 'saved' || prediction.classification === 'Error'}
@@ -1164,6 +1238,16 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                     {saveStatus === 'saved' ? 'Successfully Saved!' :
                      saveStatus === 'saving' ? 'Saving to Database...' :
                      'Save to Database'}
+                  </button>
+                  
+                  <button
+                    onClick={exportToExcel}
+                    className="btn-primary btn-with-icon"
+                    title="Export all prediction data from database to Excel"
+                    style={{ width: '140px', minWidth: 'unset', fontSize: '14px' }}
+                  >
+                    <Download className="btn-icon" size={20} strokeWidth={2.5} />
+                    Export Data
                   </button>
                 </div>
                 </div>
