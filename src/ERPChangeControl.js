@@ -198,34 +198,163 @@ const ERPChangeControl = () => {
     }
     
     const emailBody = `
-Dear Team,
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.4; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .header { border-bottom: 2px solid #0078d4; padding-bottom: 10px; margin-bottom: 20px; }
+        .alert-banner { background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin-bottom: 20px; }
+        .alert-title { font-weight: bold; color: #856404; font-size: 12pt; }
+        h2 { color: #0078d4; font-size: 12pt; margin: 20px 0 10px 0; border-bottom: 1px solid #e1e1e1; padding-bottom: 5px; }
+        .section { margin-bottom: 20px; }
+        .change-description { background-color: #f8f9fa; border-left: 4px solid #0078d4; padding: 15px; margin: 10px 0; border-radius: 0 4px 4px 0; }
+        .impact-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        .impact-table td { padding: 8px 12px; border: 1px solid #e1e1e1; }
+        .impact-table .label { background-color: #f8f9fa; font-weight: bold; width: 30%; }
+        .justification { background-color: #f8f9fa; padding: 15px; border-radius: 4px; margin: 10px 0; }
+        .next-steps { background-color: #fff; border: 2px dashed #ccc; padding: 20px; margin: 15px 0; text-align: center; color: #666; }
+        .signature { margin-top: 30px; padding-top: 15px; border-top: 1px solid #e1e1e1; font-style: italic; color: #666; }
+        .classification-high { color: #d63384; font-weight: bold; }
+        .classification-medium { color: #fd7e14; font-weight: bold; }
+        .classification-low { color: #198754; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Dear Team,</p>
+        
+        <p>A <b>${editableClassification}</b> has been identified for the [value stream], [value substream] value stream in the [course(s)]. Please review the description of the change, the impact assessment, and the next steps plan.</p>
 
-A ${editableClassification.toUpperCase()} has been identified for the ${valueStreams.toUpperCase()} value stream, "[SUBSTREAM]" courses below. Please review the description of the change, the impact assessment and the next steps plan.
+        <div class="section">
+            <h2>📋 Change Description</h2>
+            <div class="change-description">
+                ${changeDescription.replace(/\n/g, '<br>')}
+            </div>
+        </div>
 
-Change Description:
-${changeDescription}
+        <div class="section">
+            <h2>📊 Impact Assessment</h2>
+            <table class="impact-table">
+                <tr>
+                    <td class="label">Classification:</td>
+                    <td class="classification-${editableClassification.toLowerCase()}">${editableClassification}</td>
+                </tr>
+                <tr>
+                    <td class="label">Estimated Delay:</td>
+                    <td>${editableDelay === 0 ? 'No delay expected' : `${editableDelay} business days`}</td>
+                </tr>
+            </table>
+        </div>
 
-Impact Assessment:
-• Classification: ${editableClassification}
-• Estimated Delay: ${editableDelay === 0 ? 'No delay' : `${editableDelay} business days`}
+        <div class="section">
+            <h2>💭 Justification</h2>
+            <div class="justification">
+                ${editableJustification.replace(/\n/g, '<br>')}
+            </div>
+        </div>
 
-Justification:
-${editableJustification}
-
-Next Steps:
-
-
-Please review this impact assessment and take appropriate action. 
-
-Best regards,
-Training Impact Predictor System
+        <div class="section">
+            <h2>📝 Next Steps</h2>
+            <div class="next-steps" style="text-align: left;">
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
     `.trim();
 
-    // Create mailto URL
-    const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+    // Create a new window/tab with the HTML email that can be copied
+    const emailWindow = window.open('', '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
     
-    // Open email client
-    window.open(mailtoUrl, '_self');
+    // Write the HTML content to the new window
+    emailWindow.document.write(`
+      <html>
+      <head>
+        <title>Email Preview - ${subject}</title>
+        <style>
+          .email-controls { 
+            position: sticky; 
+            top: 0; 
+            background: #f0f0f0; 
+            padding: 15px; 
+            border-bottom: 2px solid #ccc; 
+            text-align: center;
+            font-family: Arial, sans-serif;
+          }
+          .email-controls button {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+          }
+          .email-controls button:hover { background: #106ebe; }
+          .email-content { margin: 20px; }
+          .copy-instructions {
+            background: #e7f3ff;
+            border: 1px solid #b3d8ff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="email-controls">
+          <h3 style="margin: 0 0 10px 0; color: #333;">Training Impact Alert Email</h3>
+          <div class="copy-instructions">
+            <strong>Instructions:</strong> Click Copy to Clipboard, then Open Outlook and paste the content.
+          </div>
+          <button onclick="copyToClipboard()" title="Copy email content to clipboard">Copy to Clipboard</button>
+          <button onclick="openOutlook()" title="Open Outlook with subject">Open Outlook</button>
+        </div>
+        
+        <div class="email-content" id="emailContent">
+          ${emailBody}
+        </div>
+        
+        <script>
+          function selectAllContent() {
+            const content = document.getElementById('emailContent');
+            const range = document.createRange();
+            range.selectNodeContents(content);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
+          
+          function copyToClipboard() {
+            selectAllContent();
+            try {
+              document.execCommand('copy');
+              alert('Email content copied to clipboard! You can now paste it into Outlook.');
+            } catch (err) {
+              alert('Copy failed. Please manually select and copy the content below.');
+            }
+          }
+          
+          function openOutlook() {
+            const subject = "${encodeURIComponent(subject)}";
+            const mailtoUrl = \`mailto:?subject=\${subject}\`;
+            window.open(mailtoUrl, '_self');
+          }
+        </script>
+      </body>
+      </html>
+    `);
+    
+    emailWindow.document.close();
   };
 
   const predictImpact = async () => {
@@ -1040,7 +1169,7 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                 </div>
                 
                 {/* Notification Panel */}
-                {(editableClassification === 'Significant Change' || editableClassification === 'Major Change') && (
+                {(editableClassification === 'Minor Change' || editableClassification === 'Significant Change' || editableClassification === 'Major Change') && (
                   <div className="relative self-start flex-shrink-0" style={{ width: '300px', textAlign: 'left' }}>
                     <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 rounded-xl blur-sm opacity-70"></div>
                     <div className="relative bg-gradient-to-br from-white via-amber-50/80 to-orange-50/60 backdrop-blur-sm border border-amber-200/60 rounded-xl shadow-lg" style={{ padding: '12px', textAlign: 'left' }}>
@@ -1053,7 +1182,11 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                         </h5>
                       </div>
                       <div className="pl-8 pr-2" style={{ textAlign: 'left' }}>
-                        {editableClassification === 'Significant Change' ? (
+                        {editableClassification === 'Minor Change' ? (
+                          <p className="text-xs text-amber-800 leading-relaxed font-semibold" style={{ textAlign: 'left' }}>
+                            <span className="text-amber-700">Notify: VSPO, PO, Lara Gorton, and Training Lead</span>
+                          </p>
+                        ) : editableClassification === 'Significant Change' ? (
                           <p className="text-xs text-amber-800 leading-relaxed font-semibold" style={{ textAlign: 'left' }}>
                             <span className="text-amber-700">Notify: VSPO, PO, Sarah Gentry, Hala Amer, Chris Fisher, Emily Shin, OCM Lead</span>
                           </p>
