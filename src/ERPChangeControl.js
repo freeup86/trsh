@@ -1075,7 +1075,7 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
             ✨ Enhanced Training Impact Predictor ✨
           </h2>
           <p className="text-center text-gray-600 max-w-3xl mx-auto mb-6">
-            Our predictor primarily uses training material data from ai_training_material/ (335+ courses, 1,500+ modules) to analyze changes. AI enhancement provides secondary validation when confidence is low, ensuring accurate predictions based on real project outcomes.
+            Our predictor primarily uses training material data from 335+ courses and 1,500+ modules to analyze changes. AI enhancement provides secondary validation when confidence is low, ensuring accurate predictions based on real project outcomes.
           </p>
           <div className="flex flex-col items-center w-full">
             <textarea
