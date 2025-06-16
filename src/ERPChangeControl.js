@@ -679,35 +679,28 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                 },
                 {
                   number: "3",
-                  title: "Ticketing",
-                  subtitle: "VS lead submits ticket if due dates are impacted",
-                  color: colorPalette.mediumBlue,
-                  lightColor: colorPalette.veryLightBlue
-                },
-                {
-                  number: "4",
                   title: "Pause Course",
                   subtitle: "Course is paused pending stakeholder approval for Major changes",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 },
                 {
-                  number: "5",
+                  number: "4",
                   title: "Stakeholder Communication",
                   subtitle: "Notify stakeholders or request approval based on requested change",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 },
                 {
-                  number: "6",
+                  number: "5",
                   title: "Approval & Resumption",
                   subtitle: "Once approval is received, course is moved to later sprint",
                   color: colorPalette.mediumBlue,
                   lightColor: colorPalette.veryLightBlue
                 }
               ].map((step, index) => {
-                const startAngle = (index * 60) - 90;
-                const endAngle = ((index + 1) * 60) - 90;
+                const startAngle = (index * 72) - 90;
+                const endAngle = ((index + 1) * 72) - 90;
                 const outerRadius = 280;
                 const innerRadius = 100;
                 
@@ -722,7 +715,7 @@ Please either confirm the primary prediction or provide an enhanced assessment. 
                 const y4 = 300 + Math.sin(endAngle * Math.PI / 180) * innerRadius;
                 
                 // Text positioning - moved inward for better fit
-                const midAngle = startAngle + 30;
+                const midAngle = startAngle + 36;
                 const textRadius = innerRadius + ((outerRadius - innerRadius) * 0.55);
                 const textX = 300 + Math.cos(midAngle * Math.PI / 180) * textRadius;
                 const textY = 300 + Math.sin(midAngle * Math.PI / 180) * textRadius;
